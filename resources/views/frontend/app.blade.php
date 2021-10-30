@@ -7,9 +7,9 @@
     <meta property="og:title" content="@yield('title')">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Çindən Bakıya sürətli və sərfəli qiymətlərlə çatdırılma (Kargo)" />
-    <meta name="og:description" content="Çindən Bakıya sürətli və sərfəli qiymətlərlə çatdırılma (Kargo)" />
-    <meta name="keywords" content="Kargo,Çin,Çindən Bakıya,Onlayn alış veriş,kargo şirkəti,Kuryer,çatdırılma,Online Kargo,Cargo,Elpost">
+    <meta name="description" content="Həkim" />
+    <meta name="og:description" content="Həkim" />
+    <meta name="keywords" content="Həkim, Doctor">
     <meta name="author" content="www.fermanli.net">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -32,13 +32,13 @@
 
 <body id="top">
 
-<x-header></x-header>
+<x-frontend.header></x-frontend.header>
 
-<x-page-title></x-page-title>
+<x-frontend.page-title></x-frontend.page-title>
 
 @yield('content')
 
-<x-footer></x-footer>
+<x-frontend.footer></x-frontend.footer>
 
 <!--
 Essential Scripts
