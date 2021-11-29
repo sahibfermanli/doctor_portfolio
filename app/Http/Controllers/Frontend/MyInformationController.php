@@ -18,10 +18,10 @@ class MyInformationController extends Controller
     {
         $doctor = Doctor::query()
             ->where('id', 1)
-            ->with('socials')
+            ->with(['socials', 'education'])
             ->first();
 
-        return view('frontend.my_information');
+        return view('frontend.my_information', compact('doctor'));
     }
 
     /**
