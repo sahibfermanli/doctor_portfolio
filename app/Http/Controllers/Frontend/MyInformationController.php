@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -15,6 +16,11 @@ class MyInformationController extends Controller
      */
     public function index(): View
     {
+        $doctor = Doctor::query()
+            ->where('id', 1)
+            ->with('socials')
+            ->first();
+
         return view('frontend.my_information');
     }
 
