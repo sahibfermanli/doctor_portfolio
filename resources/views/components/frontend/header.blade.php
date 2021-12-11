@@ -40,6 +40,7 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" href="{{route('about')}}">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('skills')}}">My skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('contact.index')}}">Contact</a></li>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="department.html" id="dropdown02"
