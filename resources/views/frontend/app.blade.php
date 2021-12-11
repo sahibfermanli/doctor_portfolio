@@ -34,7 +34,9 @@
 
 <x-frontend.header></x-frontend.header>
 
-<x-frontend.page-title></x-frontend.page-title>
+{{--@if(Request::route()->getName() !== 'home')--}}
+{{--    <x-frontend.page-title></x-frontend.page-title>--}}
+{{--@endif--}}
 
 @yield('content')
 

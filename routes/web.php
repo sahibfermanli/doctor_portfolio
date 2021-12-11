@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\MyInformationController;
+use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('my-information', MyInformationController::class);
+Route::get('', [HomeController::class, 'index'])->name('home');
+Route::get('about', [MyInformationController::class, 'index'])->name('about');

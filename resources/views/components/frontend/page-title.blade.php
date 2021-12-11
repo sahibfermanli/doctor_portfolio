@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="block text-center">
-                    <span class="text-white">Doctor Details</span>
-                    <h1 class="text-capitalize mb-5 text-lg">Alexandar james</h1>
+                    <span class="text-white">{{$doctor->profession}}</span>
+                    <h1 class="text-capitalize mb-5 text-lg">{{$doctor->fullname()}}</h1>
 
                     {{--                    <ul class="list-inline breadcumb-nav">--}}
                     {{--                      <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>--}}
