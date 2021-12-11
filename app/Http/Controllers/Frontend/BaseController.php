@@ -9,11 +9,22 @@ use Illuminate\Support\Facades\View;
 
 class BaseController extends Controller
 {
-    public function __construct()
+    public function __construct(Request $request)
     {
+        switch ($request->route()->getName()) {
+            case 'about':
+                $doctor_relations = ['socials', 'education'];
+                break;
+            case 'skills':
+                $doctor_relations = ['skills'];
+                break;
+            default:
+                $doctor_relations = [];
+        }
+
         $doctor = Doctor::query()
             ->where('id', 1)
-            //->with(['socials', 'education']) # because has one doctor
+            ->with($doctor_relations)
             ->first();
 
         View::share('doctor', $doctor);

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Models\Doctor;
 use Illuminate\View\View;
 
 class MyInformationController extends BaseController

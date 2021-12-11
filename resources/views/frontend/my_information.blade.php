@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="doctor-img-block">
-                        <img src="{{$doctor->image ?? asset('frontend/images/team/1.jpg')}}" alt="{{$doctor->fullname(true)}}" class="img-fluid w-100">
+                        <img src="{{$doctor->image ? asset($doctor->image) : asset('frontend/images/team/1.jpg')}}" alt="{{$doctor->fullname(true)}}" class="img-fluid w-100">
 
                         <div class="info-block mt-4">
                             <h4 class="mb-0">{{$doctor->fullname()}}</h4>
