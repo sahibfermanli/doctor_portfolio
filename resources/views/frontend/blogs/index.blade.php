@@ -23,11 +23,14 @@
                                                 class="icofont-comment mr-2"></i>
                                             {{$blog->comments_count === 0 ? 'No comment' : $blog->comments_count . ' ' . Str::plural('comment', $blog->comments_count)}}
                                         </span>
+                                            <span style="margin-right: 10px;"><img style="height: 25px;" alt="eye"
+                                                                                   src="{{asset('frontend/images/blog/eye.png')}}"/> {{$blog->read_count}}</span>
                                             <span class="text-black text-capitalize mr-3"><i
                                                     class="icofont-calendar mr-1"></i>{{$blog->created_at}}</span>
                                         </div>
 
-                                        <h2 class="mt-3 mb-3"><a href="{{route('blog.show', [$blog->slug])}}">{{$blog->title}}</a></h2>
+                                        <h2 class="mt-3 mb-3"><a
+                                                href="{{route('blog.show', [$blog->slug])}}">{{$blog->title}}</a></h2>
 
                                         <p class="mb-4">{{$blog->short_content}}</p>
 

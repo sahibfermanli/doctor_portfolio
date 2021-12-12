@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Session;
 class BlogController extends BaseController
 {
     // TODO BaseController control
-    // TODO Blog: search, tags, share. Comment: reply.
+    // TODO Blog: search, tags, share, created date cast for human. Comment: reply, date cast for human.
 
     public function index($slug = null) {
         [$categories, $popular_blogs] = $this->get_datas();
@@ -24,6 +24,7 @@ class BlogController extends BaseController
                 });
             })
             ->withCount('comments')
+            ->orderBy('id', 'desc')
             ->get();
 
         return view('frontend.blogs.index', compact('categories', 'popular_blogs', 'blogs'));
