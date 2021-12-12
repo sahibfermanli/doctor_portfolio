@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Session;
 class BlogController extends BaseController
 {
     // TODO BaseController control
-    // TODO Blog: search, tags, share, created date cast for human. Comment: reply, date cast for human.
+    // TODO Blog: search, tags, share, created date cast for human, paginate. Comment: reply, date cast for human.
 
     public function index($slug = null) {
         [$categories, $popular_blogs] = $this->get_datas();
