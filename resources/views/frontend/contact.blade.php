@@ -68,33 +68,33 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input name="fullname" id="fullname" type="text" class="form-control"
+                                    <input name="fullname" id="fullname" type="text" class="form-control" required
                                            placeholder="Your Full Name" maxlength="100" value="{{old('fullname')}}">
                                 </div>
                             </div>
 
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input name="email" id="email" type="email" class="form-control"
+                                    <input name="email" id="email" type="email" class="form-control" required
                                            placeholder="Your Email Address" maxlength="100" value="{{old('email')}}">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input name="phone" id="phone" type="text" class="form-control"
+                                    <input name="phone" id="phone" type="text" class="form-control" required
                                            placeholder="Your Phone Number" maxlength="15" value="{{old('phone')}}">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input name="topic" id="topic" type="text" class="form-control"
+                                    <input name="topic" id="topic" type="text" class="form-control" required
                                            placeholder="Your Query Topic" maxlength="255" value="{{old('topic')}}">
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group-2 mb-4">
-                            <textarea name="message" id="message" class="form-control" rows="8"
+                            <textarea name="message" id="message" class="form-control" rows="8" required
                                       placeholder="Your Message" maxlength="5000">{{old('message')}}</textarea>
                         </div>
 
