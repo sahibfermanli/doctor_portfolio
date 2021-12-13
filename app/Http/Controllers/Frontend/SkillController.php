@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class SkillController extends BaseController
 {
+    public function __construct($doctor_relations = ['skills'])
+    {
+        parent::__construct($doctor_relations);
+    }
+
     public function index() {
         return view('frontend.skills');
     }

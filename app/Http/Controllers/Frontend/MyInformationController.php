@@ -6,6 +6,11 @@ use Illuminate\View\View;
 
 class MyInformationController extends BaseController
 {
+    public function __construct($doctor_relations = ['socials', 'education'])
+    {
+        parent::__construct($doctor_relations);
+    }
+
     /**
      * Display a listing of the resource.
      *
