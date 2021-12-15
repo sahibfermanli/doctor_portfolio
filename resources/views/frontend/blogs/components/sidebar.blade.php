@@ -33,19 +33,19 @@
         </div>
 
 
-        <div class="sidebar-widget tags mb-3">
-            <h5 class="mb-4">Tags</h5>
+{{--        <div class="sidebar-widget tags mb-3">--}}
+{{--            <h5 class="mb-4">Tags</h5>--}}
 
-            <a href="#">Doctors</a>
-            <a href="#">agency</a>
-            <a href="#">company</a>
-            <a href="#">medicine</a>
-            <a href="#">surgery</a>
-            <a href="#">Marketing</a>
-            <a href="#">Social Media</a>
-            <a href="#">Branding</a>
-            <a href="#">Laboratory</a>
-        </div>
+{{--            <a href="#">Doctors</a>--}}
+{{--            <a href="#">agency</a>--}}
+{{--            <a href="#">company</a>--}}
+{{--            <a href="#">medicine</a>--}}
+{{--            <a href="#">surgery</a>--}}
+{{--            <a href="#">Marketing</a>--}}
+{{--            <a href="#">Social Media</a>--}}
+{{--            <a href="#">Branding</a>--}}
+{{--            <a href="#">Laboratory</a>--}}
+{{--        </div>--}}
 
 
 {{--        <div class="sidebar-widget schedule-widget mb-3">--}}

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Session;
 
 class BlogController extends BaseController
 {
-    // TODO Blog: tags, share, created date cast for human, paginate.
+    // TODO Blog: share, paginate.
     // TODO Comment: reply, date cast for human.
 
     public function __construct($doctor_relations = [])
@@ -82,7 +82,12 @@ class BlogController extends BaseController
 
     private function get_datas(): array
     {
-        $categories = Category::query()->withCount('blogs')->get();
+        $categories = Category::query()
+            ->withCount('blogs')
+            ->orderBy('blogs_count', 'desc')
+            ->take(15)
+            ->get();
+
         $popular_blogs = Blog::query()
             ->orderBy('read_count', 'desc')
             ->orderBy('id', 'desc')

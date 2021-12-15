@@ -32,11 +32,11 @@
                                     {!! $blog->content !!}
 
                                     <div class="mt-5 clearfix">
-                                        <ul class="float-left list-inline tag-option">
-                                            <li class="list-inline-item"><a href="#">Advancher</a></li>
-                                            <li class="list-inline-item"><a href="#">Landscape</a></li>
-                                            <li class="list-inline-item"><a href="#">Travel</a></li>
-                                        </ul>
+{{--                                        <ul class="float-left list-inline tag-option">--}}
+{{--                                            <li class="list-inline-item"><a href="#">Advancher</a></li>--}}
+{{--                                            <li class="list-inline-item"><a href="#">Landscape</a></li>--}}
+{{--                                            <li class="list-inline-item"><a href="#">Travel</a></li>--}}
+{{--                                        </ul>--}}
 
                                         <ul class="float-right list-inline">
                                             <li class="list-inline-item"> Share:</li>
