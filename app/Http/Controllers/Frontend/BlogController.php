@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\Session;
 
 class BlogController extends BaseController
 {
-    // TODO Comment: reply
-
     public function __construct($doctor_relations = [])
     {
         parent::__construct($doctor_relations);

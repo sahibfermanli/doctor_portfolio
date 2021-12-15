@@ -45,7 +45,7 @@
 {{--                                        </ul>--}}
 
                                         <ul class="float-right list-inline">
-                                            <li class="list-inline-item"> Share:</li>
+{{--                                            <li class="list-inline-item"> Share:</li>--}}
                                             <li class="list-inline-item" style="line-height: 12px;">
                                                 <div class="fb-share-button"
                                                      data-href="{{url()->current()}}"
@@ -85,9 +85,9 @@
                                                         <h5 class="mb-1">{{$comment->name}}</h5>
                                                         <span class="date-comm">{{$comment->created_at}}</span>
                                                     </div>
-                                                    <div class="comment-meta mt-2">
-                                                        <a href="#"><i class="icofont-reply mr-2 text-muted"></i>Reply</a>
-                                                    </div>
+{{--                                                    <div class="comment-meta mt-2">--}}
+{{--                                                        <a href="#"><i class="icofont-reply mr-2 text-muted"></i>Reply</a>--}}
+{{--                                                    </div>--}}
 
                                                     <div class="comment-content mt-3">
                                                         <p>{{$comment->content}}</p>

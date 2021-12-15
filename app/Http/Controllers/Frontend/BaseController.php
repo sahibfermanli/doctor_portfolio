@@ -13,6 +13,7 @@ class BaseController extends Controller
         $doctor = Doctor::query()
             ->where('id', 1)
             ->with($doctor_relations)
+            ->with('socials')
             ->first();
 
         View::share('doctor', $doctor);

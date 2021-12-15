@@ -6,7 +6,7 @@ use Illuminate\View\View;
 
 class MyInformationController extends BaseController
 {
-    public function __construct($doctor_relations = ['socials', 'education'])
+    public function __construct($doctor_relations = ['education'])
     {
         parent::__construct($doctor_relations);
     }
