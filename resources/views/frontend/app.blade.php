@@ -32,6 +32,8 @@
 
 <body id="top">
 
+@yield('facebook')
+
 <x-frontend.header></x-frontend.header>
 
 {{--@if(Request::route()->getName() !== 'home')--}}

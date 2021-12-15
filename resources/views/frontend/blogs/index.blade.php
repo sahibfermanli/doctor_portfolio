@@ -60,10 +60,6 @@
                     <nav class="pagination py-2 d-inline-block">
                         <div class="nav-links">
                             {!! $blogs->links('vendor.pagination.blog'); !!}
-{{--                            <span aria-current="page" class="page-numbers current">1</span>--}}
-{{--                            <a class="page-numbers" href="#">2</a>--}}
-{{--                            <a class="page-numbers" href="#">3</a>--}}
-{{--                            <a class="page-numbers" href="#"><i class="icofont-thin-double-right"></i></a>--}}
                         </div>
                     </nav>
                 </div>

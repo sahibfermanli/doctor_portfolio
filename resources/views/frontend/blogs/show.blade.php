@@ -2,6 +2,11 @@
 
 @section('title', 'Blog | ' . $blog->title)
 
+@section('facebook')
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v13.0" nonce="Rxgy28um"></script>
+@endsection
+
 @section('content')
     <section class="section blog-wrap">
         <div class="container">
@@ -37,6 +42,17 @@
 {{--                                            <li class="list-inline-item"><a href="#">Landscape</a></li>--}}
 {{--                                            <li class="list-inline-item"><a href="#">Travel</a></li>--}}
 {{--                                        </ul>--}}
+
+                                        <div class="fb-share-button"
+                                             data-href="{{url()->current()}}"
+                                             data-layout="button_count"
+                                             data-size="small">
+                                            <a target="_blank"
+                                               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
+                                               class="fb-xfbml-parse-ignore">
+                                                Share
+                                            </a>
+                                        </div>
 
                                         <ul class="float-right list-inline">
                                             <li class="list-inline-item"> Share:</li>
