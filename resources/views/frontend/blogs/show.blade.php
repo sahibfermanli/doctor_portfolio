@@ -4,7 +4,7 @@
 
 @section('socials')
     <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v13.0" nonce="Rxgy28um"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0" nonce="Rxgy28um"></script>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 @endsection
 

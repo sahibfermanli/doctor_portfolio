@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Session;
 
 class BlogController extends BaseController
 {
-    // TODO Blog: share
     // TODO Comment: reply
 
     public function __construct($doctor_relations = [])
