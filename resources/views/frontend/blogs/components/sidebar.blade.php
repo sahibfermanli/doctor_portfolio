@@ -2,8 +2,8 @@
     <div class="sidebar-wrap pl-lg-4 mt-5 mt-lg-0">
         <div class="sidebar-widget search  mb-3 ">
             <h5>Search Here</h5>
-            <form action="#" class="search-form">
-                <input type="text" class="form-control" placeholder="search">
+            <form action="{{route('blog.index')}}" class="search-form" method="get">
+                <input value="{{$search??''}}" type="text" class="form-control" name="search" placeholder="search">
                 <i class="ti-search"></i>
             </form>
         </div>

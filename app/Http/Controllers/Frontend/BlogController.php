@@ -6,33 +6,49 @@ use App\Http\Requests\Frontend\Blog\StoreCommentRequest;
 use App\Models\Blog;
 use App\Models\Category;
 use Exception;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
 
 class BlogController extends BaseController
 {
-    // TODO BaseController control
-    // TODO Blog: search, tags, share, created date cast for human, paginate. Comment: reply, date cast for human.
+    // TODO Blog: tags, share, created date cast for human, paginate.
+    // TODO Comment: reply, date cast for human.
 
-    public function index($slug = null) {
+    public function __construct($doctor_relations = [])
+    {
+        parent::__construct($doctor_relations);
+
         [$categories, $popular_blogs] = $this->get_datas();
 
+        \Illuminate\Support\Facades\View::share(['categories' => $categories, 'popular_blogs' => $popular_blogs]);
+    }
+
+    public function index(Request $request, $slug = null): View
+    {
+        $search = $request->input('search');
+
         $blogs = Blog::query()
-            ->when($slug !== null, function($q) use($slug) {
-                $q->whereHas('category', function($query) use ($slug){
+            ->when($slug !== null, function ($q) use ($slug) {
+                $q->whereHas('category', function ($query) use ($slug) {
                     $query->where('slug', $slug);
                 });
+            })
+            ->when(isset($search) && !empty($search), function($query) use ($search) {
+                $query->where('title', 'LIKE', '%' . $search . '%');
+                $query->orWhere('short_content', 'LIKE', '%' . $search . '%');
+                $query->orWhere('content', 'LIKE', '%' . $search . '%');
             })
             ->withCount('comments')
             ->orderBy('id', 'desc')
             ->get();
 
-        return view('frontend.blogs.index', compact('categories', 'popular_blogs', 'blogs'));
+        return view('frontend.blogs.index', compact('blogs', 'search'));
     }
 
-    public function show($slug) {
-        [$categories, $popular_blogs] = $this->get_datas();
-
+    public function show($slug): View
+    {
         $blog = Blog::query()
             ->where('slug', $slug)
             ->with(['comments', 'category'])
@@ -44,7 +60,7 @@ class BlogController extends BaseController
 
         $blog->increment('read_count');
 
-        return view('frontend.blogs.show', compact('categories', 'popular_blogs', 'blog'));
+        return view('frontend.blogs.show', compact('blog'));
     }
 
     public function store_comment(StoreCommentRequest $request, Blog $blog): RedirectResponse

@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
 
 class SkillController extends BaseController
 {
@@ -12,7 +11,8 @@ class SkillController extends BaseController
         parent::__construct($doctor_relations);
     }
 
-    public function index() {
+    public function index(): View
+    {
         return view('frontend.skills');
     }
 }

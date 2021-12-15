@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Requests\Frontend\StoreContactRequest;
 use App\Models\Contact;
 use Exception;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
 
 class ContactController extends BaseController
 {
-    public function index()
+    public function index(): View
     {
         return view('frontend.contact');
     }
