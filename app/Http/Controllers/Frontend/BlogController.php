@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Session;
 
 class BlogController extends BaseController
 {
-    // TODO Blog: share, paginate.
-    // TODO Comment: reply, date cast for human.
+    // TODO Blog: share
+    // TODO Comment: reply
 
     public function __construct($doctor_relations = [])
     {
@@ -42,7 +42,8 @@ class BlogController extends BaseController
             })
             ->withCount('comments')
             ->orderBy('id', 'desc')
-            ->get();
+            ->paginate(10)
+            ->withQueryString();
 
         return view('frontend.blogs.index', compact('blogs', 'search'));
     }
