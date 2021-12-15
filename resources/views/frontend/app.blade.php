@@ -32,7 +32,7 @@
 
 <body id="top">
 
-@yield('facebook')
+@yield('socials')
 
 <x-frontend.header></x-frontend.header>
 
