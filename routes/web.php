@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\MyInformationController;
@@ -30,3 +31,5 @@ Route::group(['prefix' => 'blog', 'as' => 'blog.'], function() {
     Route::get('show/{slug}', [BlogController::class, 'show'])->name('show');
     Route::post('comment/add/{blog}', [BlogController::class, 'store_comment'])->name('add_comment');
 });
+
+include ('admin.php');

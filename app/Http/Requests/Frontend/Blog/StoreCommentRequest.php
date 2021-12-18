@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Frontend\Blog;
 
 use Illuminate\Foundation\Http\FormRequest;
+use JetBrains\PhpStorm\ArrayShape;
 
 class StoreCommentRequest extends FormRequest
 {
@@ -21,7 +22,7 @@ class StoreCommentRequest extends FormRequest
      *
      * @return array
      */
-    public function rules(): array
+    #[ArrayShape(['name' => "string[]", 'email' => "string[]", 'content' => "string[]"])] public function rules(): array
     {
         return [
             'name' => ['required', 'string', 'max:100'],

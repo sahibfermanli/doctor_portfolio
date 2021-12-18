@@ -17,14 +17,21 @@ class Doctor extends Model
 {
     use HasFactory, SoftDeletes, CascadeSoftDeletes;
 
-    protected $cascadeDeletes = ['socials'];
+    protected array $cascadeDeletes = ['socials'];
 
     protected $fillable = [
         'name',
         'surname',
         'father_name',
         'birthday',
+        'profession',
+        'short_about',
+        'about',
+        'phone',
+        'email',
+        'location',
         'image',
+        'logo',
     ];
 
 
