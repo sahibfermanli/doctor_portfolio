@@ -194,6 +194,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   $_veeValidate: {
@@ -3996,6 +4002,43 @@ var render = function () {
                                                         },
                                                         expression:
                                                           "editedItem.profession",
+                                                      },
+                                                    }),
+                                                    _vm._v(" "),
+                                                    _c("v-text-field", {
+                                                      directives: [
+                                                        {
+                                                          name: "validate",
+                                                          rawName: "v-validate",
+                                                          value: "required",
+                                                          expression:
+                                                            "'required'",
+                                                        },
+                                                      ],
+                                                      attrs: {
+                                                        "error-messages":
+                                                          _vm.errors.collect(
+                                                            "location"
+                                                          ),
+                                                        "data-vv-name":
+                                                          "location",
+                                                        label: "Location",
+                                                      },
+                                                      model: {
+                                                        value:
+                                                          _vm.editedItem
+                                                            .location,
+                                                        callback: function (
+                                                          $$v
+                                                        ) {
+                                                          _vm.$set(
+                                                            _vm.editedItem,
+                                                            "location",
+                                                            $$v
+                                                          )
+                                                        },
+                                                        expression:
+                                                          "editedItem.location",
                                                       },
                                                     }),
                                                     _vm._v(" "),

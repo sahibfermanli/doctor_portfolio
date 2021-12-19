@@ -34,8 +34,4 @@ Route::group(['prefix' => 'blog', 'as' => 'blog.'], function() {
 
 include ('admin.php');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
 require __DIR__.'/auth.php';

@@ -89,6 +89,12 @@
                                                                       label="Profession"
                                                         ></v-text-field>
                                                         <v-text-field v-validate="'required'"
+                                                                      :error-messages="errors.collect('location')"
+                                                                      data-vv-name="location"
+                                                                      v-model="editedItem.location"
+                                                                      label="Location"
+                                                        ></v-text-field>
+                                                        <v-text-field v-validate="'required'"
                                                                       :error-messages="errors.collect('phone')"
                                                                       data-vv-name="phone"
                                                                       v-model="editedItem.phone"
