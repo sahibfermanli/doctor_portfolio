@@ -2023,6 +2023,10 @@ var Doctor = function Doctor() {
   return __webpack_require__.e(/*! import() */ "resources_js_admin_views_Doctor_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Doctor.vue */ "./resources/js/admin/views/Doctor.vue"));
 };
 
+var Socials = function Socials() {
+  return __webpack_require__.e(/*! import() */ "resources_js_admin_views_Socials_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Socials.vue */ "./resources/js/admin/views/Socials.vue"));
+};
+
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
@@ -2031,6 +2035,10 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MOD
     path: '/admin/doctor',
     name: 'Doctor',
     component: Doctor
+  }, {
+    path: '/admin/doctor/socials/:id',
+    name: 'Socials',
+    component: Socials
   }]
 }));
 
@@ -92683,7 +92691,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_vue__;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if (chunkId === "resources_js_admin_views_Doctor_vue") return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_admin_views_Doctor_vue":1,"resources_js_admin_views_Socials_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
