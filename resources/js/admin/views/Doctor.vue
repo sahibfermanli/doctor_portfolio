@@ -56,6 +56,7 @@
                                                     tile
                                                 >
                                                     <v-card-text>
+                                                        <v-file-input id="image" label="Profile image"></v-file-input>
                                                         <v-text-field v-validate="'required'"
                                                                       :error-messages="errors.collect('name')"
                                                                       data-vv-name="name"
@@ -129,6 +130,9 @@
                         </v-dialog>
                     </v-toolbar>
                 </template>
+<!--                <template v-slot:item.image="{ item }">-->
+<!--                    <img :src="item.profile_image" style="width: 50px; height: 50px" />-->
+<!--                </template>-->
                 <template v-slot:item.action="{ item }">
                     <v-icon
                         small
@@ -187,6 +191,7 @@ export default {
                 align: 'left',
                 value: 'id',
             },
+            // {text: 'Image', value: 'image'},
             {text: 'Name', value: 'name'},
             {text: 'Surname', value: 'surname'},
             {text: 'Father name', value: 'father_name'},
@@ -308,7 +313,22 @@ export default {
 
                             let newItem = _this.editedItem
 
-                            axios.post('/adminAPI/doctor/update/' + newItem.id, newItem)
+                            let formData = new FormData()
+
+                            formData.append('id', newItem.id)
+                            formData.append('name', newItem.name)
+                            formData.append('surname', newItem.surname)
+                            formData.append('father_name', newItem.father_name)
+                            formData.append('birthday', newItem.birthday)
+                            formData.append('profession', newItem.profession)
+                            formData.append('short_about', newItem.short_about)
+                            formData.append('phone', newItem.phone)
+                            formData.append('email', newItem.email)
+                            formData.append('location', newItem.location)
+                            formData.append('about', newItem.about)
+                            formData.append('image', document.getElementById('image').files[0] ?? null)
+
+                            axios.post('/adminAPI/doctor/update/' + newItem.id, formData)
                                 .then(function (resp) {
                                     Swal.fire({
                                         type: 'success',

@@ -30936,7 +30936,7 @@ var render = function () {
                 [
                   _c(
                     "v-list-item-icon",
-                    [_c("v-icon", [_vm._v("mdi-ab-testing")])],
+                    [_c("v-icon", [_vm._v("mdi-doctor")])],
                     1
                   ),
                   _vm._v(" "),

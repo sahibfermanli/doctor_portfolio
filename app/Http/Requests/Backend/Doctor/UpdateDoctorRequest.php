@@ -28,6 +28,7 @@ class UpdateDoctorRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'image' => ['required'],
             'name' => ['required', 'string', 'max:50'],
             'surname' => ['required', 'string', 'max:50'],
             'father_name' => ['required', 'string', 'max:50'],

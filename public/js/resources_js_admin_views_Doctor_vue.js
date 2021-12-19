@@ -174,6 +174,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   $_veeValidate: {
@@ -199,7 +203,8 @@ __webpack_require__.r(__webpack_exports__);
         text: 'ID',
         align: 'left',
         value: 'id'
-      }, {
+      }, // {text: 'Image', value: 'image'},
+      {
         text: 'Name',
         value: 'name'
       }, {
@@ -331,9 +336,24 @@ __webpack_require__.r(__webpack_exports__);
       this.$validator.validateAll().then(function (responses) {
         if (responses) {
           if (_this3.editedIndex > -1) {
+            var _document$getElementB;
+
             var _this = _this3;
             var newItem = _this.editedItem;
-            axios.post('/adminAPI/doctor/update/' + newItem.id, newItem).then(function (resp) {
+            var formData = new FormData();
+            formData.append('id', newItem.id);
+            formData.append('name', newItem.name);
+            formData.append('surname', newItem.surname);
+            formData.append('father_name', newItem.father_name);
+            formData.append('birthday', newItem.birthday);
+            formData.append('profession', newItem.profession);
+            formData.append('short_about', newItem.short_about);
+            formData.append('phone', newItem.phone);
+            formData.append('email', newItem.email);
+            formData.append('location', newItem.location);
+            formData.append('about', newItem.about);
+            formData.append('image', (_document$getElementB = document.getElementById('image').files[0]) !== null && _document$getElementB !== void 0 ? _document$getElementB : null);
+            axios.post('/adminAPI/doctor/update/' + newItem.id, formData).then(function (resp) {
               sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                 type: 'success',
                 title: 'Success!',
@@ -3716,7 +3736,7 @@ var render = function () {
                                                     },
                                                     [
                                                       _vm._v(
-                                                        "\n                                                Please fill correctly all inputs !\n                                            "
+                                                        "\n                                                    Please fill correctly all inputs !\n                                                "
                                                       ),
                                                     ]
                                                   ),
@@ -3764,6 +3784,13 @@ var render = function () {
                                                 _c(
                                                   "v-card-text",
                                                   [
+                                                    _c("v-file-input", {
+                                                      attrs: {
+                                                        id: "image",
+                                                        label: "Profile image",
+                                                      },
+                                                    }),
+                                                    _vm._v(" "),
                                                     _c("v-text-field", {
                                                       directives: [
                                                         {
@@ -4135,7 +4162,7 @@ var render = function () {
                                     },
                                     [
                                       _vm._v(
-                                        "\n                                    Save\n                                "
+                                        "\n                                        Save\n                                    "
                                       ),
                                     ]
                                   ),
@@ -4171,7 +4198,11 @@ var render = function () {
                         },
                       },
                     },
-                    [_vm._v("\n                    edit\n                ")]
+                    [
+                      _vm._v(
+                        "\n                        edit\n                    "
+                      ),
+                    ]
                   ),
                 ]
               },

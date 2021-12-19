@@ -7,6 +7,8 @@ use App\Http\Requests\Backend\Doctor\UpdateDoctorRequest;
 use App\Models\Doctor;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Response;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 
 class DoctorController extends Controller
 {
@@ -30,6 +32,15 @@ class DoctorController extends Controller
     public function update(UpdateDoctorRequest $request, Doctor $doctor): Response
     {
         $doctor->update($request->validated());
+
+        if($request->hasFile('image') && $request->file('image')?->isValid()){
+            try {
+                $doctor->clearMediaCollection();
+                $doctor->addMediaFromRequest('image')->toMediaCollection('doctors');
+            } catch (FileDoesNotExist|FileIsTooBig) {
+                //
+            }
+        }
 
         return response(['message' => 'Item was successfully updated!']);
     }

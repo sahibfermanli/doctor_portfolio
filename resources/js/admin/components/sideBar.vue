@@ -35,7 +35,7 @@ import Swal from "sweetalert2"
             >
                 <v-list-item link to='/admin/doctor'>
                     <v-list-item-icon>
-                        <v-icon>mdi-ab-testing</v-icon>
+                        <v-icon>mdi-doctor</v-icon>
                     </v-list-item-icon>
                     <v-list-item-title>Doctor</v-list-item-title>
                 </v-list-item>

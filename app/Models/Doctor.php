@@ -2,20 +2,23 @@
 
 namespace App\Models;
 
+use App\Casts\Doctor\ProfileImageCast;
 use Dyrynda\Database\Support\CascadeSoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
 /**
  * @property mixed $name
  * @property mixed $surname
  * @property mixed $father_name
  */
-class Doctor extends Model
+class Doctor extends Model implements HasMedia
 {
-    use HasFactory, SoftDeletes, CascadeSoftDeletes;
+    use HasFactory, SoftDeletes, CascadeSoftDeletes, InteractsWithMedia;
 
     protected array $cascadeDeletes = ['socials'];
 
@@ -30,10 +33,13 @@ class Doctor extends Model
         'phone',
         'email',
         'location',
-        'image',
-        'logo',
+//        'image',
+//        'logo',
     ];
 
+    protected $casts = [
+        'profile_image' => ProfileImageCast::class
+    ];
 
     public function fullname($with_father_name = false): string
     {
