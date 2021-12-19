@@ -12,7 +12,9 @@ class Log extends Model
 
     protected $fillable = [
         'route',
+        'method',
         'url',
+        'url_full',
         'ip_address'
     ];
 }
