@@ -45,6 +45,12 @@ import Swal from "sweetalert2"
                     </v-list-item-icon>
                     <v-list-item-title>Doctor</v-list-item-title>
                 </v-list-item>
+                <v-list-item link to='/admin/categories'>
+                    <v-list-item-icon>
+                        <v-icon>mdi-format-list-bulleted</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title>Categories</v-list-item-title>
+                </v-list-item>
                 <v-list-item link to='/admin/blogs'>
                     <v-list-item-icon>
                         <v-icon>mdi-book-open-page-variant-outline</v-icon>

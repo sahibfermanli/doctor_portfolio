@@ -1915,6 +1915,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'sideBar',
   data: function data() {
@@ -2051,6 +2057,10 @@ var Skills = function Skills() {
   return __webpack_require__.e(/*! import() */ "resources_js_admin_views_Skills_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Skills.vue */ "./resources/js/admin/views/Skills.vue"));
 };
 
+var Category = function Category() {
+  return __webpack_require__.e(/*! import() */ "resources_js_admin_views_Category_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Category.vue */ "./resources/js/admin/views/Category.vue"));
+};
+
 var Blogs = function Blogs() {
   return __webpack_require__.e(/*! import() */ "resources_js_admin_views_Blogs_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Blogs.vue */ "./resources/js/admin/views/Blogs.vue"));
 };
@@ -2079,6 +2089,10 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MOD
     path: '/admin/doctor/skills/:id',
     name: 'Skills',
     component: Skills
+  }, {
+    path: '/admin/categories',
+    name: 'Category',
+    component: Category
   }, {
     path: '/admin/blogs',
     name: 'Blogs',
@@ -31008,6 +31022,21 @@ var render = function () {
                   ),
                   _vm._v(" "),
                   _c("v-list-item-title", [_vm._v("Doctor")]),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-list-item",
+                { attrs: { link: "", to: "/admin/categories" } },
+                [
+                  _c(
+                    "v-list-item-icon",
+                    [_c("v-icon", [_vm._v("mdi-format-list-bulleted")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("v-list-item-title", [_vm._v("Categories")]),
                 ],
                 1
               ),
@@ -92769,7 +92798,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_vue__;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_admin_views_Admin_vue":1,"resources_js_admin_views_Doctor_vue":1,"resources_js_admin_views_Socials_vue":1,"resources_js_admin_views_Education_vue":1,"resources_js_admin_views_Skills_vue":1,"resources_js_admin_views_Blogs_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_admin_views_Admin_vue":1,"resources_js_admin_views_Doctor_vue":1,"resources_js_admin_views_Socials_vue":1,"resources_js_admin_views_Education_vue":1,"resources_js_admin_views_Skills_vue":1,"resources_js_admin_views_Category_vue":1,"resources_js_admin_views_Blogs_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\BlogController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DoctorController;
 use App\Http\Controllers\Backend\EducationController;
 use App\Http\Controllers\Backend\SkillController;
@@ -47,6 +48,13 @@ Route::middleware('auth')->group(function () {
                 Route::post('/update/{skill}', [SkillController::class, 'update'])->name('update');
                 Route::delete('/delete/{skill}', [SkillController::class, 'destroy'])->name('delete');
             });
+        });
+
+        Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
+            Route::get('/', [CategoryController::class, 'index'])->name('index');
+            Route::post('/add', [CategoryController::class, 'store'])->name('add');
+            Route::post('/update/{category}', [CategoryController::class, 'update'])->name('update');
+            Route::delete('/delete/{category}', [CategoryController::class, 'destroy'])->name('delete');
         });
 
         Route::group(['prefix' => 'blogs', 'as' => 'blogs.'], function () {
