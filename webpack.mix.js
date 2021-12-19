@@ -11,16 +11,8 @@ const mix = require('laravel-mix');
  |
  */
 
-mix
-    .js('resources/js/app.js', 'public/js')
-    .js('resources/js/admin/admin.js', 'public/js/admin.js')
-    .sass('resources/sass/admin.scss', 'public/css')
-    .vue({
-        extractStyles: true,
-        globalStyles: false
-    })
-    .version()
-    .browserSync('http://localhost:8000/admin/')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'public/css', [
+    require('postcss-import'),
+    require('tailwindcss'),
+    require('autoprefixer'),
+]);
