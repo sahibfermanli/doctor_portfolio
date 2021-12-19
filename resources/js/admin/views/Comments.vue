@@ -31,7 +31,7 @@
 
                         <v-dialog class="zIndexModal" v-model="dialog" max-width="800px">
                             <template v-slot:activator="{ on }">
-                                <v-btn color="primary" dark class="mb-2" v-on="on">New social account</v-btn>
+                                <v-btn color="primary" dark class="mb-2" v-on="on">New comment</v-btn>
                             </template>
                             <v-card>
                                 <v-card-title>

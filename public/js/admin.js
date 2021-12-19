@@ -1820,11 +1820,6 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     SideBar: _components_sideBar__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  props: {
-    country: {
-      type: Array
-    }
-  },
   data: function data() {
     return {//
     };
@@ -1844,6 +1839,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -30881,12 +30882,7 @@ var render = function () {
               _c(
                 "transition",
                 { attrs: { name: "fade", mode: "out-in" } },
-                [
-                  _c("router-view", {
-                    key: _vm.$route.fullPath,
-                    attrs: { country: _vm.country },
-                  }),
-                ],
+                [_c("router-view")],
                 1
               ),
             ],
@@ -30987,6 +30983,18 @@ var render = function () {
                         ],
                         1
                       ),
+                      _vm._v(" "),
+                      _c("v-list-item", { staticClass: "title" }, [
+                        _c("a", { attrs: { href: "/", target: "_blank" } }, [
+                          _vm._v("Go to site"),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("v-list-item", { staticClass: "title" }, [
+                        _c("a", { attrs: { href: "/logout" } }, [
+                          _vm._v("Logout"),
+                        ]),
+                      ]),
                     ],
                     1
                   ),

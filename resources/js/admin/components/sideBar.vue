@@ -24,6 +24,12 @@ import Swal from "sweetalert2"
                             <v-list-item-subtitle><a href="http://fermanli.net" target="_blank">www.fermanli.net</a></v-list-item-subtitle>
                         </v-list-item-content>
                     </v-list-item>
+                    <v-list-item class="title">
+                        <a href="/" target="_blank">Go to site</a>
+                    </v-list-item>
+                    <v-list-item class="title">
+                        <a href="/logout">Logout</a>
+                    </v-list-item>
                 </v-list>
             </template>
 
@@ -108,7 +114,7 @@ export default {
             } else {
                 document.querySelector('aside[data-v-266210ea]').style.transform = 'translateX(-100%)'
             }
-        }
+        },
     },
     mounted: function () {
         this.onResize()

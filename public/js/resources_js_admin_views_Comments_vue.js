@@ -3673,7 +3673,7 @@ var render = function () {
                                       },
                                       on
                                     ),
-                                    [_vm._v("New social account")]
+                                    [_vm._v("New comment")]
                                   ),
                                 ]
                               },

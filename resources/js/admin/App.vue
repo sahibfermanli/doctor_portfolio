@@ -5,7 +5,7 @@
     <v-content id="main">
       <keep-alive>
         <transition name="fade" mode="out-in">
-          <router-view :key="$route.fullPath" :country="country"></router-view>
+          <router-view></router-view>
         </transition>
       </keep-alive>
     </v-content>
@@ -19,11 +19,6 @@ export default {
   name: 'App',
   components: {
     SideBar
-  },
-  props: {
-    country: {
-      type: Array
-    }
   },
   data: () => ({
     //
