@@ -45,6 +45,12 @@ import Swal from "sweetalert2"
                     </v-list-item-icon>
                     <v-list-item-title>Doctor</v-list-item-title>
                 </v-list-item>
+                <v-list-item link to='/admin/blogs'>
+                    <v-list-item-icon>
+                        <v-icon>mdi-book-open-page-variant-outline</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title>Blogs</v-list-item-title>
+                </v-list-item>
             </v-list>
         </v-navigation-drawer>
         <div class="menu_toggle" @click="menu_toogle">

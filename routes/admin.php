@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\BackendController;
+use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\DoctorController;
 use App\Http\Controllers\Backend\EducationController;
 use App\Http\Controllers\Backend\SkillController;
@@ -46,6 +47,13 @@ Route::middleware('auth')->group(function () {
                 Route::post('/update/{skill}', [SkillController::class, 'update'])->name('update');
                 Route::delete('/delete/{skill}', [SkillController::class, 'destroy'])->name('delete');
             });
+        });
+
+        Route::group(['prefix' => 'blogs', 'as' => 'blogs.'], function () {
+            Route::get('/', [BlogController::class, 'index'])->name('index');
+            Route::post('/add', [BlogController::class, 'store'])->name('add');
+            Route::post('/update/{blog}', [BlogController::class, 'update'])->name('update');
+            Route::delete('/delete/{blog}', [BlogController::class, 'destroy'])->name('delete');
         });
     });
 });

@@ -6,6 +6,7 @@ let Doctor = () => import('./views/Doctor.vue')
 let Socials = () => import('./views/Socials.vue')
 let Education = () => import('./views/Education.vue')
 let Skills = () => import('./views/Skills.vue')
+let Blogs = () => import('./views/Blogs.vue')
 
 Vue.use(Router)
 
@@ -37,6 +38,11 @@ export default new Router({
             path: '/admin/doctor/skills/:id',
             name: 'Skills',
             component: Skills,
+        },
+        {
+            path: '/admin/blogs',
+            name: 'Blogs',
+            component: Blogs,
         },
     ],
 })
