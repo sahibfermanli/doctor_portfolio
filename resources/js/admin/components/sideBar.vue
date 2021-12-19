@@ -33,6 +33,12 @@ import Swal from "sweetalert2"
                 nav
                 dense
             >
+                <v-list-item link to='/admin/users'>
+                    <v-list-item-icon>
+                        <v-icon>mdi-account</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title>Admins</v-list-item-title>
+                </v-list-item>
                 <v-list-item link to='/admin/doctor'>
                     <v-list-item-icon>
                         <v-icon>mdi-doctor</v-icon>

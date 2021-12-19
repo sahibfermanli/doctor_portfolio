@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+let Admin = () => import('./views/Admin.vue')
 let Doctor = () => import('./views/Doctor.vue')
 let Socials = () => import('./views/Socials.vue')
 let Education = () => import('./views/Education.vue')
@@ -11,6 +12,11 @@ export default new Router({
     mode: 'history',
     base: process.env.BASE_URL,
     routes: [
+        {
+            path: '/admin/users',
+            name: 'Admin',
+            component: Admin,
+        },
         {
             path: '/admin/doctor',
             name: 'Doctor',

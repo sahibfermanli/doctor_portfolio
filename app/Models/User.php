@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\PasswordCast;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -41,6 +42,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
+        'password' => PasswordCast::class,
         'email_verified_at' => 'datetime',
     ];
 }
