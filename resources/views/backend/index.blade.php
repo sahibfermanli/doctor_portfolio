@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 {{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">--}}
 <!-- Styles -->
-    <link href="{{ asset('css/admin.css?ver=0.1.0') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin.css?ver=0.1.1') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 </head>
 
@@ -32,7 +32,7 @@
     <my-app></my-app>
 </div>
 
-<script src="{{ asset('js/admin.js?ver=0.1.0') }}"></script>
+<script src="{{ asset('js/admin.js?ver=0.1.1') }}"></script>
 </body>
 
 </html>
