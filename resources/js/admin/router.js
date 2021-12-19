@@ -5,6 +5,7 @@ let Admin = () => import('./views/Admin.vue')
 let Doctor = () => import('./views/Doctor.vue')
 let Socials = () => import('./views/Socials.vue')
 let Education = () => import('./views/Education.vue')
+let Skills = () => import('./views/Skills.vue')
 
 Vue.use(Router)
 
@@ -31,6 +32,11 @@ export default new Router({
             path: '/admin/doctor/education/:id',
             name: 'Education',
             component: Education,
+        },
+        {
+            path: '/admin/doctor/skills/:id',
+            name: 'Skills',
+            component: Skills,
         },
     ],
 })

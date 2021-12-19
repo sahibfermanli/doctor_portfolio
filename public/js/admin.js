@@ -2041,6 +2041,10 @@ var Education = function Education() {
   return __webpack_require__.e(/*! import() */ "resources_js_admin_views_Education_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Education.vue */ "./resources/js/admin/views/Education.vue"));
 };
 
+var Skills = function Skills() {
+  return __webpack_require__.e(/*! import() */ "resources_js_admin_views_Skills_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Skills.vue */ "./resources/js/admin/views/Skills.vue"));
+};
+
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
@@ -2061,6 +2065,10 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MOD
     path: '/admin/doctor/education/:id',
     name: 'Education',
     component: Education
+  }, {
+    path: '/admin/doctor/skills/:id',
+    name: 'Skills',
+    component: Skills
   }]
 }));
 
@@ -92728,7 +92736,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_vue__;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_admin_views_Admin_vue":1,"resources_js_admin_views_Doctor_vue":1,"resources_js_admin_views_Socials_vue":1,"resources_js_admin_views_Education_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_admin_views_Admin_vue":1,"resources_js_admin_views_Doctor_vue":1,"resources_js_admin_views_Socials_vue":1,"resources_js_admin_views_Education_vue":1,"resources_js_admin_views_Skills_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

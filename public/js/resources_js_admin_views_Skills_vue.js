@@ -1,8 +1,8 @@
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_admin_views_Doctor_vue"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_admin_views_Skills_vue"],{
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/views/Doctor.vue?vue&type=script&lang=js&":
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/views/Skills.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/views/Doctor.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/views/Skills.vue?vue&type=script&lang=js& ***!
   \**************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -13,68 +13,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -237,31 +175,11 @@ __webpack_require__.r(__webpack_exports__);
         text: 'Name',
         value: 'name'
       }, {
-        text: 'Surname',
-        value: 'surname'
+        text: 'Description',
+        value: 'description'
       }, {
-        text: 'Father name',
-        value: 'father_name'
-      }, {
-        text: 'Birthday',
-        value: 'birthday'
-      }, {
-        text: 'Profession',
-        value: 'profession'
-      }, // {text: 'Short about', value: 'short_about'},
-      {
-        text: 'Phone',
-        value: 'phone'
-      }, {
-        text: 'Email',
-        value: 'email'
-      }, {
-        text: 'Location',
-        value: 'location'
-      }, {
-        text: 'Links',
-        value: 'links',
-        sortable: false
+        text: 'experience',
+        value: 'experience'
       }, {
         text: 'Actions',
         value: 'action',
@@ -272,34 +190,20 @@ __webpack_require__.r(__webpack_exports__);
       editedItem: {
         id: 0,
         name: '',
-        surname: '',
-        father_name: '',
-        birthday: '',
-        profession: '',
-        short_about: '',
-        phone: '',
-        email: '',
-        location: '',
-        about: ''
+        description: '',
+        experience: ''
       },
       defaultItem: {
         id: 0,
         name: '',
-        surname: '',
-        father_name: '',
-        birthday: '',
-        profession: '',
-        short_about: '',
-        phone: '',
-        email: '',
-        location: '',
-        about: ''
+        description: '',
+        experience: ''
       }
     };
   },
   computed: {
     formTitle: function formTitle() {
-      return this.editedIndex === -1 ? 'New doctor' : 'Edit doctor';
+      return this.editedIndex === -1 ? 'New social account' : 'Edit social account';
     }
   },
   watch: {
@@ -315,7 +219,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       _this.isLoading = true;
-      axios.get('/adminAPI/doctor' + '?page=' + this.pagination.current).then(function (resp) {
+      axios.get('/adminAPI/doctor/skills/' + this.$route.params.id + '?page=' + this.pagination.current).then(function (resp) {
         _this.desserts = resp.data.data;
         _this.pagination.current = resp.data.current_page;
         _this.pagination.total = resp.data.last_page;
@@ -332,7 +236,7 @@ __webpack_require__.r(__webpack_exports__);
     initializePage: function initializePage() {
       var _this = this;
 
-      axios.get('/adminAPI/doctor' + '?page=' + this.pagination.current).then(function (resp) {
+      axios.get('/adminAPI/doctor/skills/' + this.$route.params.id + '?page=' + this.pagination.current).then(function (resp) {
         _this.pagination.current = resp.data.current_page;
         _this.pagination.total = resp.data.last_page;
       })["catch"](function (resp) {
@@ -345,15 +249,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     onPageChange: function onPageChange() {
       this.initialize();
-    },
-    goToSocials: function goToSocials(id) {
-      this.$router.push('/admin/doctor/socials/' + id);
-    },
-    goToEducation: function goToEducation(id) {
-      this.$router.push('/admin/doctor/education/' + id);
-    },
-    goToSkills: function goToSkills(id) {
-      this.$router.push('/admin/doctor/skills/' + id);
     },
     editItem: function editItem(item) {
       this.editedIndex = this.desserts.indexOf(item);
@@ -380,20 +275,12 @@ __webpack_require__.r(__webpack_exports__);
 
             var _this = _this3;
             var newItem = _this.editedItem;
-            var formData = new FormData(); //formData.append('id', newItem.id)
-
+            var formData = new FormData();
             formData.append('name', newItem.name);
-            formData.append('surname', newItem.surname);
-            formData.append('father_name', newItem.father_name);
-            formData.append('birthday', newItem.birthday);
-            formData.append('profession', newItem.profession);
-            formData.append('short_about', newItem.short_about);
-            formData.append('phone', newItem.phone);
-            formData.append('email', newItem.email);
-            formData.append('location', newItem.location);
-            formData.append('about', newItem.about);
+            formData.append('description', newItem.description);
+            formData.append('experience', newItem.experience);
             formData.append('image', (_document$getElementB = document.getElementById('image').files[0]) !== null && _document$getElementB !== void 0 ? _document$getElementB : null);
-            axios.post('/adminAPI/doctor/update/' + newItem.id, formData).then(function (resp) {
+            axios.post('/adminAPI/doctor/skills/update/' + newItem.id, formData).then(function (resp) {
               sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                 type: 'success',
                 title: 'Success!',
@@ -404,7 +291,6 @@ __webpack_require__.r(__webpack_exports__);
 
               _this.close();
             })["catch"](function (resp) {
-              console.log(resp);
               sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                 type: 'error',
                 title: 'Opps!',
@@ -412,10 +298,80 @@ __webpack_require__.r(__webpack_exports__);
               });
             });
           } else {
-            _this3.error = true;
+            var _document$getElementB2;
+
+            var _this4 = _this3;
+            var _newItem = _this4.editedItem;
+
+            var _formData = new FormData();
+
+            _formData.append('name', _newItem.name);
+
+            _formData.append('description', _newItem.description);
+
+            _formData.append('experience', _newItem.experience);
+
+            _formData.append('image', (_document$getElementB2 = document.getElementById('image').files[0]) !== null && _document$getElementB2 !== void 0 ? _document$getElementB2 : null);
+
+            axios.post('/adminAPI/doctor/skills/' + _this3.$route.params.id + '/add/', _formData).then(function (resp) {
+              sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
+                type: 'success',
+                title: 'Success!',
+                text: resp.data.message
+              });
+
+              _this4.initialize();
+
+              _this4.close();
+            })["catch"](function (resp) {
+              sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
+                type: 'error',
+                title: 'Opps!',
+                text: resp
+              });
+            });
           }
         } else {
           _this3.error = true;
+        }
+      });
+    },
+    deleteItem: function deleteItem(item) {
+      var index = this.desserts.indexOf(item);
+      var app = this;
+      sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
+        title: 'Are you sure?',
+        text: 'You won\'t be able to revert this!',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(function (result) {
+        if (result.value) {
+          axios["delete"]('/adminAPI/doctor/skills/delete/' + item.id).then(function (resp) {
+            var old = app.pagination.current;
+            app.initializePage();
+            sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
+              type: 'success',
+              title: 'Success!',
+              text: resp.data.message
+            })["finally"](function () {
+              if (old >= app.pagination.total) {
+                app.pagination.current = app.pagination.total;
+              } else {
+                app.pagination.current = old;
+              }
+
+              app.initialize();
+            });
+          })["catch"](function (resp) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
+              type: 'error',
+              title: 'Opps!',
+              text: resp
+            });
+          });
         }
       });
     }
@@ -3613,9 +3569,9 @@ if (typeof this !== 'undefined' && this.Sweetalert2){  this.swal = this.sweetAle
 
 /***/ }),
 
-/***/ "./resources/js/admin/views/Doctor.vue":
+/***/ "./resources/js/admin/views/Skills.vue":
 /*!*********************************************!*\
-  !*** ./resources/js/admin/views/Doctor.vue ***!
+  !*** ./resources/js/admin/views/Skills.vue ***!
   \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -3624,8 +3580,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Doctor_vue_vue_type_template_id_67087484___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Doctor.vue?vue&type=template&id=67087484& */ "./resources/js/admin/views/Doctor.vue?vue&type=template&id=67087484&");
-/* harmony import */ var _Doctor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Doctor.vue?vue&type=script&lang=js& */ "./resources/js/admin/views/Doctor.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Skills_vue_vue_type_template_id_e287293e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Skills.vue?vue&type=template&id=e287293e& */ "./resources/js/admin/views/Skills.vue?vue&type=template&id=e287293e&");
+/* harmony import */ var _Skills_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Skills.vue?vue&type=script&lang=js& */ "./resources/js/admin/views/Skills.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -3635,9 +3591,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Doctor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Doctor_vue_vue_type_template_id_67087484___WEBPACK_IMPORTED_MODULE_0__.render,
-  _Doctor_vue_vue_type_template_id_67087484___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _Skills_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Skills_vue_vue_type_template_id_e287293e___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Skills_vue_vue_type_template_id_e287293e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -3647,14 +3603,14 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/admin/views/Doctor.vue"
+component.options.__file = "resources/js/admin/views/Skills.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/admin/views/Doctor.vue?vue&type=script&lang=js&":
+/***/ "./resources/js/admin/views/Skills.vue?vue&type=script&lang=js&":
 /*!**********************************************************************!*\
-  !*** ./resources/js/admin/views/Doctor.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/js/admin/views/Skills.vue?vue&type=script&lang=js& ***!
   \**********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -3663,31 +3619,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Doctor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Doctor.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/views/Doctor.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Doctor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Skills_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Skills.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/views/Skills.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Skills_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/admin/views/Doctor.vue?vue&type=template&id=67087484&":
+/***/ "./resources/js/admin/views/Skills.vue?vue&type=template&id=e287293e&":
 /*!****************************************************************************!*\
-  !*** ./resources/js/admin/views/Doctor.vue?vue&type=template&id=67087484& ***!
+  !*** ./resources/js/admin/views/Skills.vue?vue&type=template&id=e287293e& ***!
   \****************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Doctor_vue_vue_type_template_id_67087484___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Doctor_vue_vue_type_template_id_67087484___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Skills_vue_vue_type_template_id_e287293e___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Skills_vue_vue_type_template_id_e287293e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Doctor_vue_vue_type_template_id_67087484___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Doctor.vue?vue&type=template&id=67087484& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/views/Doctor.vue?vue&type=template&id=67087484&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Skills_vue_vue_type_template_id_e287293e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Skills.vue?vue&type=template&id=e287293e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/views/Skills.vue?vue&type=template&id=e287293e&");
 
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/views/Doctor.vue?vue&type=template&id=67087484&":
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/views/Skills.vue?vue&type=template&id=e287293e&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/views/Doctor.vue?vue&type=template&id=67087484& ***!
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/views/Skills.vue?vue&type=template&id=e287293e& ***!
   \*******************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -3706,7 +3662,7 @@ var render = function () {
       "div",
       { staticClass: "container" },
       [
-        _c("h1", [_vm._v("Doctor")]),
+        _c("h1", [_vm._v("Skills")]),
         _vm._v(" "),
         _c("v-data-table", {
           staticClass: "elevation-1",
@@ -3737,6 +3693,27 @@ var render = function () {
                         {
                           staticClass: "zIndexModal",
                           attrs: { "max-width": "800px" },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "activator",
+                              fn: function (ref) {
+                                var on = ref.on
+                                return [
+                                  _c(
+                                    "v-btn",
+                                    _vm._g(
+                                      {
+                                        staticClass: "mb-2",
+                                        attrs: { color: "primary", dark: "" },
+                                      },
+                                      on
+                                    ),
+                                    [_vm._v("New skill")]
+                                  ),
+                                ]
+                              },
+                            },
+                          ]),
                           model: {
                             value: _vm.dialog,
                             callback: function ($$v) {
@@ -3746,6 +3723,7 @@ var render = function () {
                           },
                         },
                         [
+                          _vm._v(" "),
                           _c(
                             "v-card",
                             [
@@ -3824,13 +3802,6 @@ var render = function () {
                                                 _c(
                                                   "v-card-text",
                                                   [
-                                                    _c("v-file-input", {
-                                                      attrs: {
-                                                        id: "image",
-                                                        label: "Profile image",
-                                                      },
-                                                    }),
-                                                    _vm._v(" "),
                                                     _c("v-text-field", {
                                                       directives: [
                                                         {
@@ -3879,27 +3850,27 @@ var render = function () {
                                                       attrs: {
                                                         "error-messages":
                                                           _vm.errors.collect(
-                                                            "surname"
+                                                            "description"
                                                           ),
                                                         "data-vv-name":
-                                                          "surname",
-                                                        label: "Surname",
+                                                          "description",
+                                                        label: "Description",
                                                       },
                                                       model: {
                                                         value:
                                                           _vm.editedItem
-                                                            .surname,
+                                                            .description,
                                                         callback: function (
                                                           $$v
                                                         ) {
                                                           _vm.$set(
                                                             _vm.editedItem,
-                                                            "surname",
+                                                            "description",
                                                             $$v
                                                           )
                                                         },
                                                         expression:
-                                                          "editedItem.surname",
+                                                          "editedItem.description",
                                                       },
                                                     }),
                                                     _vm._v(" "),
@@ -3916,282 +3887,35 @@ var render = function () {
                                                       attrs: {
                                                         "error-messages":
                                                           _vm.errors.collect(
-                                                            "father_name"
+                                                            "experience"
                                                           ),
                                                         "data-vv-name":
-                                                          "father_name",
-                                                        label: "Father Name",
-                                                      },
-                                                      model: {
-                                                        value:
-                                                          _vm.editedItem
-                                                            .father_name,
-                                                        callback: function (
-                                                          $$v
-                                                        ) {
-                                                          _vm.$set(
-                                                            _vm.editedItem,
-                                                            "father_name",
-                                                            $$v
-                                                          )
-                                                        },
-                                                        expression:
-                                                          "editedItem.father_name",
-                                                      },
-                                                    }),
-                                                    _vm._v(" "),
-                                                    _c("v-text-field", {
-                                                      directives: [
-                                                        {
-                                                          name: "validate",
-                                                          rawName: "v-validate",
-                                                          value: "required",
-                                                          expression:
-                                                            "'required'",
-                                                        },
-                                                      ],
-                                                      attrs: {
-                                                        "error-messages":
-                                                          _vm.errors.collect(
-                                                            "birthday"
-                                                          ),
-                                                        "data-vv-name":
-                                                          "birthday",
+                                                          "experience",
                                                         type: "date",
-                                                        label: "Birthday",
+                                                        label: "experience",
                                                       },
                                                       model: {
                                                         value:
                                                           _vm.editedItem
-                                                            .birthday,
+                                                            .experience,
                                                         callback: function (
                                                           $$v
                                                         ) {
                                                           _vm.$set(
                                                             _vm.editedItem,
-                                                            "birthday",
+                                                            "experience",
                                                             $$v
                                                           )
                                                         },
                                                         expression:
-                                                          "editedItem.birthday",
+                                                          "editedItem.experience",
                                                       },
                                                     }),
                                                     _vm._v(" "),
-                                                    _c("v-text-field", {
-                                                      directives: [
-                                                        {
-                                                          name: "validate",
-                                                          rawName: "v-validate",
-                                                          value: "required",
-                                                          expression:
-                                                            "'required'",
-                                                        },
-                                                      ],
+                                                    _c("v-file-input", {
                                                       attrs: {
-                                                        "error-messages":
-                                                          _vm.errors.collect(
-                                                            "profession"
-                                                          ),
-                                                        "data-vv-name":
-                                                          "profession",
-                                                        label: "Profession",
-                                                      },
-                                                      model: {
-                                                        value:
-                                                          _vm.editedItem
-                                                            .profession,
-                                                        callback: function (
-                                                          $$v
-                                                        ) {
-                                                          _vm.$set(
-                                                            _vm.editedItem,
-                                                            "profession",
-                                                            $$v
-                                                          )
-                                                        },
-                                                        expression:
-                                                          "editedItem.profession",
-                                                      },
-                                                    }),
-                                                    _vm._v(" "),
-                                                    _c("v-text-field", {
-                                                      directives: [
-                                                        {
-                                                          name: "validate",
-                                                          rawName: "v-validate",
-                                                          value: "required",
-                                                          expression:
-                                                            "'required'",
-                                                        },
-                                                      ],
-                                                      attrs: {
-                                                        "error-messages":
-                                                          _vm.errors.collect(
-                                                            "location"
-                                                          ),
-                                                        "data-vv-name":
-                                                          "location",
-                                                        label: "Location",
-                                                      },
-                                                      model: {
-                                                        value:
-                                                          _vm.editedItem
-                                                            .location,
-                                                        callback: function (
-                                                          $$v
-                                                        ) {
-                                                          _vm.$set(
-                                                            _vm.editedItem,
-                                                            "location",
-                                                            $$v
-                                                          )
-                                                        },
-                                                        expression:
-                                                          "editedItem.location",
-                                                      },
-                                                    }),
-                                                    _vm._v(" "),
-                                                    _c("v-text-field", {
-                                                      directives: [
-                                                        {
-                                                          name: "validate",
-                                                          rawName: "v-validate",
-                                                          value: "required",
-                                                          expression:
-                                                            "'required'",
-                                                        },
-                                                      ],
-                                                      attrs: {
-                                                        "error-messages":
-                                                          _vm.errors.collect(
-                                                            "phone"
-                                                          ),
-                                                        "data-vv-name": "phone",
-                                                        label: "Phone",
-                                                      },
-                                                      model: {
-                                                        value:
-                                                          _vm.editedItem.phone,
-                                                        callback: function (
-                                                          $$v
-                                                        ) {
-                                                          _vm.$set(
-                                                            _vm.editedItem,
-                                                            "phone",
-                                                            $$v
-                                                          )
-                                                        },
-                                                        expression:
-                                                          "editedItem.phone",
-                                                      },
-                                                    }),
-                                                    _vm._v(" "),
-                                                    _c("v-text-field", {
-                                                      directives: [
-                                                        {
-                                                          name: "validate",
-                                                          rawName: "v-validate",
-                                                          value: "required",
-                                                          expression:
-                                                            "'required'",
-                                                        },
-                                                      ],
-                                                      attrs: {
-                                                        "error-messages":
-                                                          _vm.errors.collect(
-                                                            "email"
-                                                          ),
-                                                        "data-vv-name": "email",
-                                                        type: "email",
-                                                        label: "Email",
-                                                      },
-                                                      model: {
-                                                        value:
-                                                          _vm.editedItem.email,
-                                                        callback: function (
-                                                          $$v
-                                                        ) {
-                                                          _vm.$set(
-                                                            _vm.editedItem,
-                                                            "email",
-                                                            $$v
-                                                          )
-                                                        },
-                                                        expression:
-                                                          "editedItem.email",
-                                                      },
-                                                    }),
-                                                    _vm._v(" "),
-                                                    _c("v-text-field", {
-                                                      directives: [
-                                                        {
-                                                          name: "validate",
-                                                          rawName: "v-validate",
-                                                          value: "required",
-                                                          expression:
-                                                            "'required'",
-                                                        },
-                                                      ],
-                                                      attrs: {
-                                                        "error-messages":
-                                                          _vm.errors.collect(
-                                                            "short_about"
-                                                          ),
-                                                        "data-vv-name":
-                                                          "short_about",
-                                                        label: "Short about",
-                                                      },
-                                                      model: {
-                                                        value:
-                                                          _vm.editedItem
-                                                            .short_about,
-                                                        callback: function (
-                                                          $$v
-                                                        ) {
-                                                          _vm.$set(
-                                                            _vm.editedItem,
-                                                            "short_about",
-                                                            $$v
-                                                          )
-                                                        },
-                                                        expression:
-                                                          "editedItem.short_about",
-                                                      },
-                                                    }),
-                                                    _vm._v(" "),
-                                                    _c("ckeditor", {
-                                                      directives: [
-                                                        {
-                                                          name: "validate",
-                                                          rawName: "v-validate",
-                                                          value: "required",
-                                                          expression:
-                                                            "'required'",
-                                                        },
-                                                      ],
-                                                      attrs: {
-                                                        "error-messages":
-                                                          _vm.errors.collect(
-                                                            "about"
-                                                          ),
-                                                        "data-vv-name": "about",
-                                                        label: "About",
-                                                      },
-                                                      model: {
-                                                        value:
-                                                          _vm.editedItem.about,
-                                                        callback: function (
-                                                          $$v
-                                                        ) {
-                                                          _vm.$set(
-                                                            _vm.editedItem,
-                                                            "about",
-                                                            $$v
-                                                          )
-                                                        },
-                                                        expression:
-                                                          "editedItem.about",
+                                                        id: "image",
+                                                        label: "Image",
                                                       },
                                                     }),
                                                   ],
@@ -4260,59 +3984,6 @@ var render = function () {
               proxy: true,
             },
             {
-              key: "item.links",
-              fn: function (ref) {
-                var item = ref.item
-                return [
-                  _c(
-                    "v-icon",
-                    {
-                      staticClass: "mr-2",
-                      attrs: { small: "" },
-                      on: {
-                        click: function ($event) {
-                          return _vm.goToSocials(item.id)
-                        },
-                      },
-                    },
-                    [_vm._v("\n                    facebook\n                ")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-icon",
-                    {
-                      staticClass: "mr-2",
-                      attrs: { small: "" },
-                      on: {
-                        click: function ($event) {
-                          return _vm.goToEducation(item.id)
-                        },
-                      },
-                    },
-                    [_vm._v("\n                    school\n                ")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-icon",
-                    {
-                      staticClass: "mr-2",
-                      attrs: { small: "" },
-                      on: {
-                        click: function ($event) {
-                          return _vm.goToSkills(item.id)
-                        },
-                      },
-                    },
-                    [
-                      _vm._v(
-                        "\n                    mdi-account-plus\n                "
-                      ),
-                    ]
-                  ),
-                ]
-              },
-            },
-            {
               key: "item.action",
               fn: function (ref) {
                 var item = ref.item
@@ -4329,6 +4000,19 @@ var render = function () {
                       },
                     },
                     [_vm._v("\n                    edit\n                ")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-icon",
+                    {
+                      attrs: { small: "" },
+                      on: {
+                        click: function ($event) {
+                          return _vm.deleteItem(item)
+                        },
+                      },
+                    },
+                    [_vm._v("\n                    delete\n                ")]
                   ),
                 ]
               },

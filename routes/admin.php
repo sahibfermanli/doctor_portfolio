@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\DoctorController;
 use App\Http\Controllers\Backend\EducationController;
+use App\Http\Controllers\Backend\SkillController;
 use App\Http\Controllers\Backend\SocialController;
 use App\Http\Controllers\Backend\UserController;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,13 @@ Route::middleware('auth')->group(function () {
                 Route::post('/{doctor}/add/', [EducationController::class, 'store'])->name('add');
                 Route::post('/update/{education}', [EducationController::class, 'update'])->name('update');
                 Route::delete('/delete/{education}', [EducationController::class, 'destroy'])->name('delete');
+            });
+
+            Route::group(['prefix' => 'skills', 'as' => 'skills.'], function () {
+                Route::get('/{doctor}', [SkillController::class, 'index'])->name('index');
+                Route::post('/{doctor}/add/', [SkillController::class, 'store'])->name('add');
+                Route::post('/update/{skill}', [SkillController::class, 'update'])->name('update');
+                Route::delete('/delete/{skill}', [SkillController::class, 'destroy'])->name('delete');
             });
         });
     });

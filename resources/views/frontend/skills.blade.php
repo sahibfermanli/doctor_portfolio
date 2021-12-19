@@ -9,7 +9,7 @@
                 @foreach($doctor->skills as $skill)
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="service-block mb-5">
-                            <img src="{{$skill->image?asset($skill->image):asset('frontend/images/service/service-1.jpg')}}"
+                            <img src="{{$skill->image}}"
                                  alt="{{$skill->name}}" class="img-fluid">
                             <div class="content">
                                 <h4 class="mt-4 mb-2 title-color">{{$skill->name}}</h4>
