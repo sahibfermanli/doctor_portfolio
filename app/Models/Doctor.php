@@ -33,7 +33,6 @@ class Doctor extends Model implements HasMedia
         'phone',
         'email',
         'location',
-//        'image',
 //        'logo',
     ];
 
