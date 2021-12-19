@@ -1,9 +1,9 @@
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_admin_views_Blogs_vue"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_admin_views_Comments_vue"],{
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/views/Blogs.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/views/Blogs.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/views/Comments.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/views/Comments.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -13,39 +13,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -190,44 +157,38 @@ __webpack_require__.r(__webpack_exports__);
         align: 'left',
         value: 'id'
       }, {
-        text: 'Title',
-        value: 'title'
+        text: 'Name',
+        value: 'name'
       }, {
-        text: 'Category',
-        value: 'category.name'
+        text: 'Email',
+        value: 'email'
       }, {
-        text: 'Read count',
-        value: 'read_count'
-      }, {
-        text: 'Comments',
-        value: 'comments_action'
+        text: 'Content',
+        value: 'content'
       }, {
         text: 'Actions',
         value: 'action',
         sortable: false
       }],
       desserts: [],
-      categories: [],
       editedIndex: -1,
       editedItem: {
         id: 0,
-        title: '',
-        short_content: '',
-        content: '',
-        category_id: ''
+        name: '',
+        email: '',
+        content: ''
       },
       defaultItem: {
         id: 0,
-        title: '',
-        short_content: '',
-        content: '',
-        category_id: ''
+        name: '',
+        email: '',
+        content: ''
       }
     };
   },
   computed: {
     formTitle: function formTitle() {
-      return this.editedIndex === -1 ? 'New social blog' : 'Edit social blog';
+      return this.editedIndex === -1 ? 'New comment' : 'Edit comment';
     }
   },
   watch: {
@@ -243,11 +204,10 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       _this.isLoading = true;
-      axios.get('/adminAPI/blogs' + '?page=' + this.pagination.current).then(function (resp) {
-        _this.categories = resp.data.categories;
-        _this.desserts = resp.data.blogs.data;
-        _this.pagination.current = resp.data.blogs.current_page;
-        _this.pagination.total = resp.data.blogs.last_page;
+      axios.get('/adminAPI/blogs/comments/' + this.$route.params.id + '?page=' + this.pagination.current).then(function (resp) {
+        _this.desserts = resp.data.data;
+        _this.pagination.current = resp.data.current_page;
+        _this.pagination.total = resp.data.last_page;
       })["catch"](function (resp) {
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
           type: 'error',
@@ -261,9 +221,9 @@ __webpack_require__.r(__webpack_exports__);
     initializePage: function initializePage() {
       var _this = this;
 
-      axios.get('/adminAPI/blogs' + '?page=' + this.pagination.current).then(function (resp) {
-        _this.pagination.current = resp.data.blogs.current_page;
-        _this.pagination.total = resp.data.blogs.last_page;
+      axios.get('/adminAPI/blogs/comments/' + this.$route.params.id + '?page=' + this.pagination.current).then(function (resp) {
+        _this.pagination.current = resp.data.current_page;
+        _this.pagination.total = resp.data.last_page;
       })["catch"](function (resp) {
         sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
           type: 'error',
@@ -279,9 +239,6 @@ __webpack_require__.r(__webpack_exports__);
       this.editedIndex = this.desserts.indexOf(item);
       this.editedItem = Object.assign({}, item);
       this.dialog = true;
-    },
-    goToComments: function goToComments(id) {
-      this.$router.push('/admin/blogs/comments/' + id);
     },
     close: function close() {
       var _this2 = this;
@@ -299,17 +256,9 @@ __webpack_require__.r(__webpack_exports__);
       this.$validator.validateAll().then(function (responses) {
         if (responses) {
           if (_this3.editedIndex > -1) {
-            var _document$getElementB;
-
             var _this = _this3;
             var newItem = _this.editedItem;
-            var formData = new FormData();
-            formData.append('title', newItem.title);
-            formData.append('short_content', newItem.short_content);
-            formData.append('content', newItem.content);
-            formData.append('category_id', newItem.category_id);
-            formData.append('image', (_document$getElementB = document.getElementById('image').files[0]) !== null && _document$getElementB !== void 0 ? _document$getElementB : null);
-            axios.post('/adminAPI/blogs/update/' + newItem.id, formData).then(function (resp) {
+            axios.post('/adminAPI/blogs/comments/update/' + newItem.id, newItem).then(function (resp) {
               sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                 type: 'success',
                 title: 'Success!',
@@ -327,24 +276,9 @@ __webpack_require__.r(__webpack_exports__);
               });
             });
           } else {
-            var _document$getElementB2;
-
             var _this4 = _this3;
             var _newItem = _this4.editedItem;
-
-            var _formData = new FormData();
-
-            _formData.append('title', _newItem.title);
-
-            _formData.append('short_content', _newItem.short_content);
-
-            _formData.append('content', _newItem.content);
-
-            _formData.append('category_id', _newItem.category_id);
-
-            _formData.append('image', (_document$getElementB2 = document.getElementById('image').files[0]) !== null && _document$getElementB2 !== void 0 ? _document$getElementB2 : null);
-
-            axios.post('/adminAPI/blogs/add/', _formData).then(function (resp) {
+            axios.post('/adminAPI/blogs/comments/' + _this3.$route.params.id + '/add/', _newItem).then(function (resp) {
               sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                 type: 'success',
                 title: 'Success!',
@@ -380,7 +314,7 @@ __webpack_require__.r(__webpack_exports__);
         confirmButtonText: 'Yes, delete it!'
       }).then(function (result) {
         if (result.value) {
-          axios["delete"]('/adminAPI/blogs/delete/' + item.id).then(function (resp) {
+          axios["delete"]('/adminAPI/blogs/comments/delete/' + item.id).then(function (resp) {
             var old = app.pagination.current;
             app.initializePage();
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
@@ -3600,10 +3534,10 @@ if (typeof this !== 'undefined' && this.Sweetalert2){  this.swal = this.sweetAle
 
 /***/ }),
 
-/***/ "./resources/js/admin/views/Blogs.vue":
-/*!********************************************!*\
-  !*** ./resources/js/admin/views/Blogs.vue ***!
-  \********************************************/
+/***/ "./resources/js/admin/views/Comments.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/admin/views/Comments.vue ***!
+  \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3611,8 +3545,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Blogs_vue_vue_type_template_id_e178de7c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Blogs.vue?vue&type=template&id=e178de7c& */ "./resources/js/admin/views/Blogs.vue?vue&type=template&id=e178de7c&");
-/* harmony import */ var _Blogs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Blogs.vue?vue&type=script&lang=js& */ "./resources/js/admin/views/Blogs.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Comments_vue_vue_type_template_id_b2994b5a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Comments.vue?vue&type=template&id=b2994b5a& */ "./resources/js/admin/views/Comments.vue?vue&type=template&id=b2994b5a&");
+/* harmony import */ var _Comments_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Comments.vue?vue&type=script&lang=js& */ "./resources/js/admin/views/Comments.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -3622,9 +3556,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Blogs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Blogs_vue_vue_type_template_id_e178de7c___WEBPACK_IMPORTED_MODULE_0__.render,
-  _Blogs_vue_vue_type_template_id_e178de7c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _Comments_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Comments_vue_vue_type_template_id_b2994b5a___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Comments_vue_vue_type_template_id_b2994b5a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -3634,15 +3568,15 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/admin/views/Blogs.vue"
+component.options.__file = "resources/js/admin/views/Comments.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/admin/views/Blogs.vue?vue&type=script&lang=js&":
-/*!*********************************************************************!*\
-  !*** ./resources/js/admin/views/Blogs.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************/
+/***/ "./resources/js/admin/views/Comments.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/admin/views/Comments.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3650,32 +3584,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Blogs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Blogs.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/views/Blogs.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Blogs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Comments_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Comments.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/views/Comments.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Comments_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/admin/views/Blogs.vue?vue&type=template&id=e178de7c&":
-/*!***************************************************************************!*\
-  !*** ./resources/js/admin/views/Blogs.vue?vue&type=template&id=e178de7c& ***!
-  \***************************************************************************/
+/***/ "./resources/js/admin/views/Comments.vue?vue&type=template&id=b2994b5a&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/admin/views/Comments.vue?vue&type=template&id=b2994b5a& ***!
+  \******************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Blogs_vue_vue_type_template_id_e178de7c___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Blogs_vue_vue_type_template_id_e178de7c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Comments_vue_vue_type_template_id_b2994b5a___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Comments_vue_vue_type_template_id_b2994b5a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Blogs_vue_vue_type_template_id_e178de7c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Blogs.vue?vue&type=template&id=e178de7c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/views/Blogs.vue?vue&type=template&id=e178de7c&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Comments_vue_vue_type_template_id_b2994b5a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Comments.vue?vue&type=template&id=b2994b5a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/views/Comments.vue?vue&type=template&id=b2994b5a&");
 
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/views/Blogs.vue?vue&type=template&id=e178de7c&":
-/*!******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/views/Blogs.vue?vue&type=template&id=e178de7c& ***!
-  \******************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/views/Comments.vue?vue&type=template&id=b2994b5a&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/views/Comments.vue?vue&type=template&id=b2994b5a& ***!
+  \*********************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3693,14 +3627,13 @@ var render = function () {
       "div",
       { staticClass: "container" },
       [
-        _c("h1", [_vm._v("Blogs")]),
+        _c("h1", [_vm._v("Comments")]),
         _vm._v(" "),
         _c("v-data-table", {
           staticClass: "elevation-1",
           attrs: {
             headers: _vm.headers,
             items: _vm.desserts,
-            categories: _vm.categories,
             search: _vm.search,
             "disable-sort": "",
             "disable-filtering": "",
@@ -3740,7 +3673,7 @@ var render = function () {
                                       },
                                       on
                                     ),
-                                    [_vm._v("New blog")]
+                                    [_vm._v("New social account")]
                                   ),
                                 ]
                               },
@@ -3847,130 +3780,11 @@ var render = function () {
                                                       attrs: {
                                                         "error-messages":
                                                           _vm.errors.collect(
-                                                            "title"
-                                                          ),
-                                                        "data-vv-name": "title",
-                                                        label: "Title",
-                                                      },
-                                                      model: {
-                                                        value:
-                                                          _vm.editedItem.title,
-                                                        callback: function (
-                                                          $$v
-                                                        ) {
-                                                          _vm.$set(
-                                                            _vm.editedItem,
-                                                            "title",
-                                                            $$v
-                                                          )
-                                                        },
-                                                        expression:
-                                                          "editedItem.title",
-                                                      },
-                                                    }),
-                                                    _vm._v(" "),
-                                                    _c("v-text-field", {
-                                                      directives: [
-                                                        {
-                                                          name: "validate",
-                                                          rawName: "v-validate",
-                                                          value: "required",
-                                                          expression:
-                                                            "'required'",
-                                                        },
-                                                      ],
-                                                      attrs: {
-                                                        "error-messages":
-                                                          _vm.errors.collect(
-                                                            "short_content"
-                                                          ),
-                                                        "data-vv-name":
-                                                          "short_content",
-                                                        label: "Short content",
-                                                      },
-                                                      model: {
-                                                        value:
-                                                          _vm.editedItem
-                                                            .short_content,
-                                                        callback: function (
-                                                          $$v
-                                                        ) {
-                                                          _vm.$set(
-                                                            _vm.editedItem,
-                                                            "short_content",
-                                                            $$v
-                                                          )
-                                                        },
-                                                        expression:
-                                                          "editedItem.short_content",
-                                                      },
-                                                    }),
-                                                    _vm._v(" "),
-                                                    _c("v-select", {
-                                                      directives: [
-                                                        {
-                                                          name: "validate",
-                                                          rawName: "v-validate",
-                                                          value: "required",
-                                                          expression:
-                                                            "'required'",
-                                                        },
-                                                      ],
-                                                      attrs: {
-                                                        "error-messages":
-                                                          _vm.errors.collect(
-                                                            "category_id"
-                                                          ),
-                                                        "data-vv-name":
-                                                          _vm.category_id,
-                                                        items: _vm.categories,
-                                                        "item-text": "name",
-                                                        "item-value": "id",
-                                                        label: "Category",
-                                                      },
-                                                      model: {
-                                                        value:
-                                                          _vm.editedItem
-                                                            .category_id,
-                                                        callback: function (
-                                                          $$v
-                                                        ) {
-                                                          _vm.$set(
-                                                            _vm.editedItem,
-                                                            "category_id",
-                                                            $$v
-                                                          )
-                                                        },
-                                                        expression:
-                                                          "editedItem.category_id",
-                                                      },
-                                                    }),
-                                                    _vm._v(" "),
-                                                    _c("v-file-input", {
-                                                      attrs: {
-                                                        id: "image",
-                                                        label: "Image",
-                                                      },
-                                                    }),
-                                                    _vm._v(" "),
-                                                    _c("ckeditor", {
-                                                      directives: [
-                                                        {
-                                                          name: "validate",
-                                                          rawName: "v-validate",
-                                                          value: "required",
-                                                          expression:
-                                                            "'required'",
-                                                        },
-                                                      ],
-                                                      attrs: {
-                                                        "error-messages":
-                                                          _vm.errors.collect(
                                                             "content"
                                                           ),
                                                         "data-vv-name":
                                                           "content",
-                                                        label: "Content",
+                                                        label: "Comment",
                                                       },
                                                       model: {
                                                         value:
@@ -4053,36 +3867,6 @@ var render = function () {
                 ]
               },
               proxy: true,
-            },
-            {
-              key: "item.comments_action",
-              fn: function (ref) {
-                var item = ref.item
-                return [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(item.comments_count) +
-                      "\n                "
-                  ),
-                  _c(
-                    "v-icon",
-                    {
-                      staticClass: "mr-2",
-                      attrs: { small: "" },
-                      on: {
-                        click: function ($event) {
-                          return _vm.goToComments(item.id)
-                        },
-                      },
-                    },
-                    [
-                      _vm._v(
-                        "\n                    mdi-comment\n                "
-                      ),
-                    ]
-                  ),
-                ]
-              },
             },
             {
               key: "item.action",

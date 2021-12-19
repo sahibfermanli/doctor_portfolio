@@ -1,11 +1,10 @@
 <template>
     <v-app>
         <div class="container">
-            <h1>Blogs</h1>
+            <h1>Comments</h1>
             <v-data-table
                 :headers="headers"
                 :items="desserts"
-                :categories="categories"
                 :search="search"
                 disable-sort
                 disable-filtering
@@ -32,7 +31,7 @@
 
                         <v-dialog class="zIndexModal" v-model="dialog" max-width="800px">
                             <template v-slot:activator="{ on }">
-                                <v-btn color="primary" dark class="mb-2" v-on="on">New blog</v-btn>
+                                <v-btn color="primary" dark class="mb-2" v-on="on">New social account</v-btn>
                             </template>
                             <v-card>
                                 <v-card-title>
@@ -58,33 +57,11 @@
                                                 >
                                                     <v-card-text>
                                                         <v-text-field v-validate="'required'"
-                                                                      :error-messages="errors.collect('title')"
-                                                                      data-vv-name="title"
-                                                                      v-model="editedItem.title"
-                                                                      label="Title"
+                                                                      :error-messages="errors.collect('content')"
+                                                                      data-vv-name="content"
+                                                                      v-model="editedItem.content"
+                                                                      label="Comment"
                                                         ></v-text-field>
-                                                        <v-text-field v-validate="'required'"
-                                                                      :error-messages="errors.collect('short_content')"
-                                                                      data-vv-name="short_content"
-                                                                      v-model="editedItem.short_content"
-                                                                      label="Short content"
-                                                        ></v-text-field>
-                                                        <v-select
-                                                            v-validate="'required'" :error-messages="errors.collect('category_id')"
-                                                            :data-vv-name="category_id"
-                                                            v-model="editedItem.category_id"
-                                                            :items="categories"
-                                                            item-text="name"
-                                                            item-value="id"
-                                                            label="Category"
-                                                        ></v-select>
-                                                        <v-file-input id="image" label="Image"></v-file-input>
-                                                        <ckeditor v-model="editedItem.content"
-                                                                  v-validate="'required'"
-                                                                  :error-messages="errors.collect('content')"
-                                                                  data-vv-name="content"
-                                                                  label="Content">
-                                                        </ckeditor>
                                                     </v-card-text>
                                                 </v-card>
                                             </template>
@@ -102,16 +79,6 @@
                             </v-card>
                         </v-dialog>
                     </v-toolbar>
-                </template>
-                <template v-slot:item.comments_action="{ item }">
-                    {{item.comments_count}}
-                    <v-icon
-                        small
-                        class="mr-2"
-                        @click="goToComments(item.id)"
-                    >
-                        mdi-comment
-                    </v-icon>
                 </template>
                 <template v-slot:item.action="{ item }">
                     <v-icon
@@ -177,34 +144,30 @@ export default {
                 align: 'left',
                 value: 'id',
             },
-            {text: 'Title', value: 'title'},
-            {text: 'Category', value: 'category.name'},
-            {text: 'Read count', value: 'read_count'},
-            {text: 'Comments', value: 'comments_action'},
+            {text: 'Name', value: 'name'},
+            {text: 'Email', value: 'email'},
+            {text: 'Content', value: 'content'},
             {text: 'Actions', value: 'action', sortable: false},
         ],
         desserts: [],
-        categories: [],
         editedIndex: -1,
         editedItem: {
             id: 0,
-            title: '',
-            short_content: '',
+            name: '',
+            email: '',
             content: '',
-            category_id: '',
         },
         defaultItem: {
             id: 0,
-            title: '',
-            short_content: '',
+            name: '',
+            email: '',
             content: '',
-            category_id: '',
         },
     }),
 
     computed: {
         formTitle() {
-            return this.editedIndex === -1 ? 'New social blog' : 'Edit social blog'
+            return this.editedIndex === -1 ? 'New comment' : 'Edit comment'
         },
     },
 
@@ -222,12 +185,11 @@ export default {
         initialize() {
             let _this = this
             _this.isLoading = true
-            axios.get('/adminAPI/blogs' + '?page=' + this.pagination.current)
+            axios.get('/adminAPI/blogs/comments/' + this.$route.params.id + '?page=' + this.pagination.current)
                 .then(function (resp) {
-                    _this.categories = resp.data.categories
-                    _this.desserts = resp.data.blogs.data
-                    _this.pagination.current = resp.data.blogs.current_page
-                    _this.pagination.total = resp.data.blogs.last_page
+                    _this.desserts = resp.data.data
+                    _this.pagination.current = resp.data.current_page
+                    _this.pagination.total = resp.data.last_page
                 })
                 .catch(function (resp) {
                     Swal.fire({
@@ -242,10 +204,10 @@ export default {
         },
         initializePage() {
             let _this = this
-            axios.get('/adminAPI/blogs' + '?page=' + this.pagination.current)
+            axios.get('/adminAPI/blogs/comments/' + this.$route.params.id + '?page=' + this.pagination.current)
                 .then(function (resp) {
-                    _this.pagination.current = resp.data.blogs.current_page
-                    _this.pagination.total = resp.data.blogs.last_page
+                    _this.pagination.current = resp.data.current_page
+                    _this.pagination.total = resp.data.last_page
                 })
                 .catch(function (resp) {
                     Swal.fire({
@@ -263,10 +225,6 @@ export default {
             this.editedIndex = this.desserts.indexOf(item)
             this.editedItem = Object.assign({}, item)
             this.dialog = true
-        },
-
-        goToComments(id) {
-            this.$router.push('/admin/blogs/comments/' + id)
         },
 
         close() {
@@ -287,15 +245,7 @@ export default {
 
                             let newItem = _this.editedItem
 
-                            let formData = new FormData()
-
-                            formData.append('title', newItem.title)
-                            formData.append('short_content', newItem.short_content)
-                            formData.append('content', newItem.content)
-                            formData.append('category_id', newItem.category_id)
-                            formData.append('image', document.getElementById('image').files[0] ?? null)
-
-                            axios.post('/adminAPI/blogs/update/' + newItem.id, formData)
+                            axios.post('/adminAPI/blogs/comments/update/' + newItem.id, newItem)
                                 .then(function (resp) {
                                     Swal.fire({
                                         type: 'success',
@@ -317,15 +267,7 @@ export default {
 
                             let newItem = _this.editedItem
 
-                            let formData = new FormData()
-
-                            formData.append('title', newItem.title)
-                            formData.append('short_content', newItem.short_content)
-                            formData.append('content', newItem.content)
-                            formData.append('category_id', newItem.category_id)
-                            formData.append('image', document.getElementById('image').files[0] ?? null)
-
-                            axios.post('/adminAPI/blogs/add/', formData).then((resp) => {
+                            axios.post('/adminAPI/blogs/comments/' + this.$route.params.id + '/add/', newItem).then((resp) => {
                                 Swal.fire({
                                     type: 'success',
                                     title: 'Success!',
@@ -360,7 +302,7 @@ export default {
                 confirmButtonText: 'Yes, delete it!',
             }).then((result) => {
                 if (result.value) {
-                    axios.delete('/adminAPI/blogs/delete/' + item.id).then(function (resp) {
+                    axios.delete('/adminAPI/blogs/comments/delete/' + item.id).then(function (resp) {
                         let old = app.pagination.current
                         app.initializePage()
                         Swal.fire({

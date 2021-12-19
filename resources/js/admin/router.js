@@ -8,6 +8,7 @@ let Education = () => import('./views/Education.vue')
 let Skills = () => import('./views/Skills.vue')
 let Category = () => import('./views/Category.vue')
 let Blogs = () => import('./views/Blogs.vue')
+let Comments = () => import('./views/Comments.vue')
 
 Vue.use(Router)
 
@@ -49,6 +50,11 @@ export default new Router({
             path: '/admin/blogs',
             name: 'Blogs',
             component: Blogs,
+        },
+        {
+            path: '/admin/blogs/comments/:id',
+            name: 'Comments',
+            component: Comments,
         },
     ],
 })

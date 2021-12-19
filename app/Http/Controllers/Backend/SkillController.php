@@ -7,7 +7,6 @@ use App\Http\Requests\Backend\Skills\SkillRequest;
 use App\Models\Doctor;
 use App\Models\Skill;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
