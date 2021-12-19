@@ -1,7 +1,7 @@
 <template>
     <v-app>
         <div class="container">
-            <h1>Doctor</h1>
+            <h1>Educational Qualifications</h1>
             <v-data-table
                 :headers="headers"
                 :items="desserts"
@@ -30,9 +30,9 @@
                         <div class="flex-grow-1"></div>
 
                         <v-dialog class="zIndexModal" v-model="dialog" max-width="800px">
-                            <!--                            <template v-slot:activator="{ on }">-->
-                            <!--                                <v-btn color="primary" dark class="mb-2" v-on="on">New doctor</v-btn>-->
-                            <!--                            </template>-->
+                            <template v-slot:activator="{ on }">
+                                <v-btn color="primary" dark class="mb-2" v-on="on">New educational qualification</v-btn>
+                            </template>
                             <v-card>
                                 <v-card-title>
                                     <span class="headline">{{ formTitle }}</span>
@@ -56,62 +56,55 @@
                                                     tile
                                                 >
                                                     <v-card-text>
-                                                        <v-file-input id="image" label="Profile image"></v-file-input>
                                                         <v-text-field v-validate="'required'"
-                                                                      :error-messages="errors.collect('name')"
-                                                                      data-vv-name="name"
-                                                                      v-model="editedItem.name"
-                                                                      label="Name"
+                                                                      :error-messages="errors.collect('degree')"
+                                                                      data-vv-name="degree"
+                                                                      v-model="editedItem.degree"
+                                                                      label="Degree"
                                                         ></v-text-field>
                                                         <v-text-field v-validate="'required'"
-                                                                      :error-messages="errors.collect('surname')"
-                                                                      data-vv-name="surname"
-                                                                      v-model="editedItem.surname"
-                                                                      label="Surname"
+                                                                      :error-messages="errors.collect('university')"
+                                                                      data-vv-name="university"
+                                                                      v-model="editedItem.university"
+                                                                      label="University"
                                                         ></v-text-field>
                                                         <v-text-field v-validate="'required'"
-                                                                      :error-messages="errors.collect('father_name')"
-                                                                      data-vv-name="father_name"
-                                                                      v-model="editedItem.father_name"
-                                                                      label="Father Name"
+                                                                      :error-messages="errors.collect('university_short')"
+                                                                      data-vv-name="university_short"
+                                                                      v-model="editedItem.university_short"
+                                                                      label="Abbreviation of the university"
                                                         ></v-text-field>
                                                         <v-text-field v-validate="'required'"
-                                                                      :error-messages="errors.collect('birthday')"
-                                                                      data-vv-name="birthday"
-                                                                      v-model="editedItem.birthday"
+                                                                      :error-messages="errors.collect('section')"
+                                                                      data-vv-name="section"
+                                                                      v-model="editedItem.section"
+                                                                      label="Section"
+                                                        ></v-text-field>
+                                                        <v-text-field v-validate="'required'"
+                                                                      :error-messages="errors.collect('city_country')"
+                                                                      data-vv-name="city_country"
+                                                                      v-model="editedItem.city_country"
+                                                                      label="City/Country"
+                                                        ></v-text-field>
+                                                        <v-text-field v-validate="'required'"
+                                                                      :error-messages="errors.collect('description')"
+                                                                      data-vv-name="description"
+                                                                      v-model="editedItem.description"
+                                                                      label="Description"
+                                                        ></v-text-field>
+                                                        <v-text-field v-validate="'required'"
+                                                                      :error-messages="errors.collect('start_date')"
+                                                                      data-vv-name="start_date"
+                                                                      v-model="editedItem.start_date"
                                                                       type="date"
-                                                                      label="Birthday"
+                                                                      label="Start date"
                                                         ></v-text-field>
-                                                        <v-text-field v-validate="'required'"
-                                                                      :error-messages="errors.collect('profession')"
-                                                                      data-vv-name="profession"
-                                                                      v-model="editedItem.profession"
-                                                                      label="Profession"
+                                                        <v-text-field :error-messages="errors.collect('end_date')"
+                                                                      data-vv-name="end_date"
+                                                                      v-model="editedItem.end_date"
+                                                                      type="date"
+                                                                      label="End date"
                                                         ></v-text-field>
-                                                        <v-text-field v-validate="'required'"
-                                                                      :error-messages="errors.collect('phone')"
-                                                                      data-vv-name="phone"
-                                                                      v-model="editedItem.phone"
-                                                                      label="Phone"
-                                                        ></v-text-field>
-                                                        <v-text-field v-validate="'required'"
-                                                                      :error-messages="errors.collect('email')"
-                                                                      data-vv-name="email"
-                                                                      v-model="editedItem.email"
-                                                                      type="email"
-                                                                      label="Email"
-                                                        ></v-text-field>
-                                                        <v-text-field v-validate="'required'"
-                                                                      :error-messages="errors.collect('short_about')"
-                                                                      data-vv-name="short_about"
-                                                                      v-model="editedItem.short_about"
-                                                                      label="Short about"
-                                                        ></v-text-field>
-                                                        <ckeditor v-model="editedItem.about"
-                                                                  v-validate="'required'"
-                                                                  :error-messages="errors.collect('about')"
-                                                                  data-vv-name="about"
-                                                                  label="About"></ckeditor>
                                                     </v-card-text>
                                                 </v-card>
                                             </template>
@@ -130,25 +123,6 @@
                         </v-dialog>
                     </v-toolbar>
                 </template>
-                <!--                <template v-slot:item.image="{ item }">-->
-                <!--                    <img :src="item.profile_image" style="width: 50px; height: 50px" />-->
-                <!--                </template>-->
-                <template v-slot:item.links="{ item }">
-                    <v-icon
-                        small
-                        class="mr-2"
-                        @click="goToSocials(item.id)"
-                    >
-                        facebook
-                    </v-icon>
-                    <v-icon
-                        small
-                        class="mr-2"
-                        @click="goToEducation(item.id)"
-                    >
-                        school
-                    </v-icon>
-                </template>
                 <template v-slot:item.action="{ item }">
                     <v-icon
                         small
@@ -156,6 +130,12 @@
                         @click="editItem(item)"
                     >
                         edit
+                    </v-icon>
+                    <v-icon
+                        small
+                        @click="deleteItem(item)"
+                    >
+                        delete
                     </v-icon>
                 </template>
                 <template v-slot:no-data>
@@ -208,16 +188,13 @@ export default {
                 value: 'id',
             },
             // {text: 'Image', value: 'image'},
-            {text: 'Name', value: 'name'},
-            {text: 'Surname', value: 'surname'},
-            {text: 'Father name', value: 'father_name'},
-            {text: 'Birthday', value: 'birthday'},
-            {text: 'Profession', value: 'profession'},
-            // {text: 'Short about', value: 'short_about'},
-            {text: 'Phone', value: 'phone'},
-            {text: 'Email', value: 'email'},
-            {text: 'Location', value: 'location'},
-            {text: 'Links', value: 'links', sortable: false},
+            {text: 'Degree', value: 'degree'},
+            {text: 'University', value: 'university'},
+            {text: 'Abbreviation of the university', value: 'university_short'},
+            {text: 'Section', value: 'section'},
+            {text: 'City/Country', value: 'city_country'},
+            {text: 'Start date', value: 'start_date'},
+            {text: 'End date', value: 'end_date'},
             {text: 'Actions', value: 'action', sortable: false},
         ],
         desserts: [],
@@ -225,34 +202,20 @@ export default {
         editedItem: {
             id: 0,
             name: '',
-            surname: '',
-            father_name: '',
-            birthday: '',
-            profession: '',
-            short_about: '',
-            phone: '',
-            email: '',
-            location: '',
-            about: '',
+            icon: '',
+            url: '',
         },
         defaultItem: {
             id: 0,
             name: '',
-            surname: '',
-            father_name: '',
-            birthday: '',
-            profession: '',
-            short_about: '',
-            phone: '',
-            email: '',
-            location: '',
-            about: '',
+            icon: '',
+            url: '',
         },
     }),
 
     computed: {
         formTitle() {
-            return this.editedIndex === -1 ? 'New doctor' : 'Edit doctor'
+            return this.editedIndex === -1 ? 'New educational qualification' : 'Edit educational qualification'
         },
     },
 
@@ -270,7 +233,7 @@ export default {
         initialize() {
             let _this = this
             _this.isLoading = true
-            axios.get('/adminAPI/doctor' + '?page=' + this.pagination.current)
+            axios.get('/adminAPI/doctor/education/' + this.$route.params.id + '?page=' + this.pagination.current)
                 .then(function (resp) {
                     _this.desserts = resp.data.data
                     _this.pagination.current = resp.data.current_page
@@ -289,7 +252,7 @@ export default {
         },
         initializePage() {
             let _this = this
-            axios.get('/adminAPI/doctor' + '?page=' + this.pagination.current)
+            axios.get('/adminAPI/doctor/education/' + this.$route.params.id + '?page=' + this.pagination.current)
                 .then(function (resp) {
                     _this.pagination.current = resp.data.current_page
                     _this.pagination.total = resp.data.last_page
@@ -304,14 +267,6 @@ export default {
         },
         onPageChange() {
             this.initialize()
-        },
-
-        goToSocials(id) {
-            this.$router.push('/admin/doctor/socials/' + id)
-        },
-
-        goToEducation(id) {
-            this.$router.push('/admin/doctor/education/' + id)
         },
 
         editItem(item) {
@@ -338,22 +293,7 @@ export default {
 
                             let newItem = _this.editedItem
 
-                            let formData = new FormData()
-
-                            formData.append('id', newItem.id)
-                            formData.append('name', newItem.name)
-                            formData.append('surname', newItem.surname)
-                            formData.append('father_name', newItem.father_name)
-                            formData.append('birthday', newItem.birthday)
-                            formData.append('profession', newItem.profession)
-                            formData.append('short_about', newItem.short_about)
-                            formData.append('phone', newItem.phone)
-                            formData.append('email', newItem.email)
-                            formData.append('location', newItem.location)
-                            formData.append('about', newItem.about)
-                            formData.append('image', document.getElementById('image').files[0] ?? null)
-
-                            axios.post('/adminAPI/doctor/update/' + newItem.id, formData)
+                            axios.post('/adminAPI/doctor/education/update/' + newItem.id, newItem)
                                 .then(function (resp) {
                                     Swal.fire({
                                         type: 'success',
@@ -364,7 +304,6 @@ export default {
                                     _this.close()
                                 })
                                 .catch(function (resp) {
-                                    console.log(resp);
                                     Swal.fire({
                                         type: 'error',
                                         title: 'Opps!',
@@ -372,12 +311,70 @@ export default {
                                     })
                                 })
                         } else {
-                            this.error = true
+                            const _this = this
+
+                            let newItem = _this.editedItem
+
+                            axios.post('/adminAPI/doctor/education/' + this.$route.params.id + '/add/', newItem).then((resp) => {
+                                Swal.fire({
+                                    type: 'success',
+                                    title: 'Success!',
+                                    text: resp.data.message,
+                                })
+                                _this.initialize()
+                                _this.close()
+                            }).catch(function (resp) {
+                                Swal.fire({
+                                    type: 'error',
+                                    title: 'Opps!',
+                                    text: resp,
+                                })
+                            })
                         }
                     } else {
                         this.error = true
                     }
                 })
+        },
+
+        deleteItem(item) {
+            const index = this.desserts.indexOf(item)
+            let app = this
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You won\'t be able to revert this!',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!',
+            }).then((result) => {
+                if (result.value) {
+                    axios.delete('/adminAPI/doctor/education/delete/' + item.id).then(function (resp) {
+                        let old = app.pagination.current
+                        app.initializePage()
+                        Swal.fire({
+                            type: 'success',
+                            title: 'Success!',
+                            text: resp.data.message,
+                        }).finally(() => {
+                            if (old >= app.pagination.total) {
+                                app.pagination.current = app.pagination.total
+                            } else {
+                                app.pagination.current = old
+                            }
+                            app.initialize()
+                        })
+                    }).catch(function (resp) {
+                        Swal.fire({
+                            type: 'error',
+                            title: 'Opps!',
+                            text: resp,
+                        })
+                    })
+
+                }
+            })
         },
     },
 }
