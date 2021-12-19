@@ -26,7 +26,7 @@
 
 <body>
 <div class="preloader" id="preloader">
-    <img src="{{ asset('/backend/images/preload.gif') }}" alt="">
+    <img src="{{ asset('/frontend/images/preload.gif') }}" alt="">
 </div>
 <div id="admin-app">
     <my-app></my-app>

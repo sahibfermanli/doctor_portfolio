@@ -87,7 +87,6 @@ export default {
     name: 'sideBar',
     data: () => ({
         mobile: false,
-        LanguageSidebar: []
     }),
     methods: {
         initialize() {
@@ -109,10 +108,10 @@ export default {
             document.getElementById('main').style.webkitTransform = 'translateX(0)'
         },
         menu_toogle() {
-            if (document.querySelector('aside[data-v-266210ea]').style.transform === 'translateX(-100%)') {
-                document.querySelector('aside[data-v-266210ea]').style.transform = 'translateX(0)'
+            if (document.querySelector('aside[data-v-a53cedfe]').style.transform === 'translateX(-100%)') {
+                document.querySelector('aside[data-v-a53cedfe]').style.transform = 'translateX(0)'
             } else {
-                document.querySelector('aside[data-v-266210ea]').style.transform = 'translateX(-100%)'
+                document.querySelector('aside[data-v-a53cedfe]').style.transform = 'translateX(-100%)'
             }
         },
     },

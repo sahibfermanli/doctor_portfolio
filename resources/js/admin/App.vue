@@ -5,7 +5,7 @@
     <v-content id="main">
       <keep-alive>
         <transition name="fade" mode="out-in">
-          <router-view></router-view>
+          <router-view :key="$route.fullPath"></router-view>
         </transition>
       </keep-alive>
     </v-content>
