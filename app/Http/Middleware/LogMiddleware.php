@@ -19,7 +19,9 @@ class LogMiddleware
     {
         Log::query()->create([
             'route' => 'site',
-            'url' => $request->fullUrl(),
+            'method' => $request->method(),
+            'url' => $request->url(),
+            'url_full' => $request->fullUrl(),
             'ip_address' => $request->ip()
         ]);
 

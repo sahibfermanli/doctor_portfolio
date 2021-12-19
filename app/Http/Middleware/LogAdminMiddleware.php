@@ -19,7 +19,9 @@ class LogAdminMiddleware
     {
         Log::query()->create([
             'route' => 'admin',
-            'url' => $request->fullUrl(),
+            'method' => $request->method(),
+            'url' => $request->url(),
+            'url_full' => $request->fullUrl(),
             'ip_address' => $request->ip()
         ]);
 
