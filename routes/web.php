@@ -18,18 +18,19 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('', [HomeController::class, 'index'])->name('home');
-Route::get('about', [MyInformationController::class, 'index'])->name('about');
-Route::get('my-skills', [SkillController::class, 'index'])->name('skills');
-Route::group(['prefix' => 'contact', 'as' => 'contact.'], function() {
-    Route::get('', [ContactController::class, 'index'])->name('index');
-    Route::post('', [ContactController::class, 'store'])->name('store');
-});
-Route::group(['prefix' => 'blog', 'as' => 'blog.'], function() {
-    Route::get('{slug?}', [BlogController::class, 'index'])->name('index');
-    Route::get('show/{slug}', [BlogController::class, 'show'])->name('show');
-    Route::post('comment/add/{blog}', [BlogController::class, 'store_comment'])->name('add_comment');
+Route::middleware('LogMiddleware')->group(function () {
+    Route::get('', [HomeController::class, 'index'])->name('home');
+    Route::get('about', [MyInformationController::class, 'index'])->name('about');
+    Route::get('my-skills', [SkillController::class, 'index'])->name('skills');
+    Route::group(['prefix' => 'contact', 'as' => 'contact.'], function () {
+        Route::get('', [ContactController::class, 'index'])->name('index');
+        Route::post('', [ContactController::class, 'store'])->name('store');
+    });
+    Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
+        Route::get('{slug?}', [BlogController::class, 'index'])->name('index');
+        Route::get('show/{slug}', [BlogController::class, 'show'])->name('show');
+        Route::post('comment/add/{blog}', [BlogController::class, 'store_comment'])->name('add_comment');
+    });
 });
 
 include ('admin.php');

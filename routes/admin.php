@@ -11,7 +11,7 @@ use App\Http\Controllers\Backend\SocialController;
 use App\Http\Controllers\Backend\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'LogAdminMiddleware'])->group(function () {
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('/{any}', [BackendController::class, 'index'])->where('any', '.*');
         Route::get('/', [BackendController::class, 'index'])->name('index');
